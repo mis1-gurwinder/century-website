@@ -82,10 +82,12 @@ for (const p of P) {
   const share = `${SITE}/assets/share/${p.id}.jpg`;
   const ld = [
     { "@context": "https://schema.org", "@type": "Product", name: p.name, alternateName: p.hi, description: p.desc, image: [img], url, brand: { "@type": "Brand", name: "Century" }, manufacturer: orgRef, category: p.type || p.cat, size: p.wt, additionalProperty: (p.pts || []).map((x) => ({ "@type": "PropertyValue", name: "Feature", value: x })) },
-    { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Century", item: `${SITE}/` },
-      { "@type": "ListItem", position: 2, name: "Products", item: `${SITE}/#products` },
-      { "@type": "ListItem", position: 3, name: p.name, item: url }] },
+    {
+      "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Century", item: `${SITE}/` },
+        { "@type": "ListItem", position: 2, name: "Products", item: `${SITE}/#products` },
+        { "@type": "ListItem", position: 3, name: p.name, item: url }]
+    },
   ];
   const html = `<!doctype html>
 <html lang="en">
@@ -96,6 +98,13 @@ for (const p of P) {
 <meta name="description" content="${esc(desc)}" />
 <meta name="robots" content="index, follow, max-image-preview:large" />
 <link rel="canonical" href="${url}" />
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-L0Z47DC41M"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag("js", new Date());
+      gtag("config", "G-L0Z47DC41M");
+    </script>
 <link rel="icon" type="image/png" href="/assets/images/favicon.png" />
 <meta name="theme-color" content="#0f5132" />
 <meta property="og:type" content="product" />

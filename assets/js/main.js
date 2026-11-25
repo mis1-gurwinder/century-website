@@ -611,7 +611,7 @@ const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
   let t = null;
   try {
     t = localStorage.getItem("c-theme");
-  } catch (e) {}
+  } catch (e) { }
   if (t) document.documentElement.dataset.theme = t;
   const curT = () =>
     document.documentElement.dataset.theme ||
@@ -623,7 +623,7 @@ const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
     $("#themeT").setAttribute("aria-checked", n === "dark");
     try {
       localStorage.setItem("c-theme", n);
-    } catch (e) {}
+    } catch (e) { }
   };
 })();
 $("#yr").textContent = new Date().getFullYear();
@@ -1266,44 +1266,41 @@ function renderProduct(id) {
    <div><h2 class="reveal"><span class="bar">Best</span> for</h2><div class="bestfor reveal">${USES[p.id].map((u) => `<span>${u}</span>`).join("")}</div>
     <h2 class="reveal" style="margin-top:56px"><span class="bar">Product</span> details</h2>
     <dl class="spec reveal"><dt>Product</dt><dd>${p.name}</dd>${p.hi ? `<dt>Hindi name</dt><dd lang="hi">${p.hi}</dd>` : ""}<dt>Category</dt><dd>${catName(p.cat)}</dd><dt>Type</dt><dd>${p.type}</dd><dt>Pack size</dt><dd>${p.wt}</dd>${dt.ing ? `<dt>Ingredients</dt><dd>${dt.ing}</dd>` : ""}${dt.alg ? `<dt>Allergen advice</dt><dd>${dt.alg}</dd>` : ""}<dt>Diet</dt><dd>100% vegetarian</dd><dt>Storage</dt><dd>Store in a cool, dry place</dd><dt>Made by</dt><dd>Dinero FoodWorks Pvt. Ltd., Punjab</dd><dt>Certified</dt><dd>FSSAI, FSSC 22000, ISO, HACCP, GMP</dd></dl></div>
-   ${
-     dt.prep
-       ? `<div><h2 class="reveal"><span class="bar">Ready in</span> 3 easy steps</h2><ol class="steps reveal" style="grid-template-columns:1fr">${dt.prep.map((t, j) => `<li><h3>${["Boil", "Cook", "Drain & squeeze"][j]}</h3><p style="margin:8px 0 0;color:var(--ink-2)">${t}</p></li>`).join("")}</ol></div>`
-       : st
-         ? `<div><h2 class="reveal"><span class="bar">How</span> to use</h2><ol class="steps reveal" style="grid-template-columns:1fr">${st.map(([h, t]) => `<li><h3>${h}</h3><p style="margin:8px 0 0;color:var(--ink-2)">${t}</p></li>`).join("")}</ol></div>`
-         : dt.qc
-           ? `<div class="qc reveal"><div class="qc-n"><span data-count="250">250</span>+</div><h3>Quality parameters tested</h3><p>Tested in an NABL-accredited laboratory for pesticide residues, heavy metals, aflatoxins, mycotoxins and other contaminants.</p><ul><li>Hygienically processed</li><li>Carefully selected grains</li><li>Source of dietary fibre</li><li>Naturally protein rich</li></ul></div>`
-           : ""
-   }
+   ${dt.prep
+      ? `<div><h2 class="reveal"><span class="bar">Ready in</span> 3 easy steps</h2><ol class="steps reveal" style="grid-template-columns:1fr">${dt.prep.map((t, j) => `<li><h3>${["Boil", "Cook", "Drain & squeeze"][j]}</h3><p style="margin:8px 0 0;color:var(--ink-2)">${t}</p></li>`).join("")}</ol></div>`
+      : st
+        ? `<div><h2 class="reveal"><span class="bar">How</span> to use</h2><ol class="steps reveal" style="grid-template-columns:1fr">${st.map(([h, t]) => `<li><h3>${h}</h3><p style="margin:8px 0 0;color:var(--ink-2)">${t}</p></li>`).join("")}</ol></div>`
+        : dt.qc
+          ? `<div class="qc reveal"><div class="qc-n"><span data-count="250">250</span>+</div><h3>Quality parameters tested</h3><p>Tested in an NABL-accredited laboratory for pesticide residues, heavy metals, aflatoxins, mycotoxins and other contaminants.</p><ul><li>Hygienically processed</li><li>Carefully selected grains</li><li>Source of dietary fibre</li><li>Naturally protein rich</li></ul></div>`
+          : ""
+    }
   </div>
   ${dt.recipe ? `<div class="pd-sec"><div class="rcp reveal"><div class="rcp-head"><small>${dt.recipe.sub}</small><h2>${dt.recipe.title}</h2><p>A recipe from the Century pack, made with ${p.name}.</p></div><ol class="rcp-steps">${dt.recipe.steps.map((t, j) => `<li style="--i:${j}"><span class="rn">${j + 1}</span><p>${t}</p></li>`).join("")}</ol></div></div>` : ""}
-  ${
-    dt.nutri || dt.protein
+  ${dt.nutri || dt.protein
       ? `<div class="pd-sec two nutri-sec${dt.protein ? "" : " solo"}">
    ${dt.nutri ? `<div><h2 class="reveal"><span class="bar">Nutritional</span> information</h2><div class="ntab reveal"><div class="nt-head"><b>Nutritional information*</b><span>Serve size: ${dt.nutri.serve}</span><span>Servings per pack: ${dt.nutri.servings}</span></div><div class="nt-scroll"><table><thead><tr><th>Nutrients (approx.)</th>${dt.nutri.cols.map((c) => `<th>${c}</th>`).join("")}</tr></thead><tbody>${dt.nutri.rows.map((r, j) => `<tr style="--i:${j}">${r.map((c, k) => (k ? `<td>${c}</td>` : `<th scope="row">${c}</th>`)).join("")}</tr>`).join("")}</tbody></table></div><p class="nt-foot">*Approximate values, as printed on the pack.</p></div></div>` : ""}
-   ${
-     dt.protein
-       ? `<div><h2 class="reveal"><span class="bar">Protein</span> per 100 g</h2><div class="pchart reveal" role="img" aria-label="Protein per 100 g: Century Soya 53 g, peanuts 26 g, lentils 22 g, almonds 21 g, paneer 18 g, flax seeds 18 g, egg 12 g">${[
-           ["Century Soya", 53, 1],
-           ["Peanuts", 26],
-           ["Lentils (dal)", 22],
-           ["Almonds", 21],
-           ["Paneer", 18],
-           ["Flax seeds", 18],
-           ["Egg", 12],
-         ]
-           .map(
-             ([n, v, me], j) =>
-               `<div class="pc-row${me ? " me" : ""}" style="--v:${v / 53};--i:${j}"><span class="pc-n">${n}</span><span class="pc-bar"><i></i></span><b>${v} g</b></div>`,
-           )
-           .join(
-             "",
-           )}<p class="nt-foot">Source: Nutritive value of foods, ICMR, JFST (as printed on the pack). One 30 g serve of Century Soya Chunks provides 35% more protein than one 40 g serve of paneer.</p></div></div>`
-       : ""
-   }
+   ${dt.protein
+        ? `<div><h2 class="reveal"><span class="bar">Protein</span> per 100 g</h2><div class="pchart reveal" role="img" aria-label="Protein per 100 g: Century Soya 53 g, peanuts 26 g, lentils 22 g, almonds 21 g, paneer 18 g, flax seeds 18 g, egg 12 g">${[
+          ["Century Soya", 53, 1],
+          ["Peanuts", 26],
+          ["Lentils (dal)", 22],
+          ["Almonds", 21],
+          ["Paneer", 18],
+          ["Flax seeds", 18],
+          ["Egg", 12],
+        ]
+          .map(
+            ([n, v, me], j) =>
+              `<div class="pc-row${me ? " me" : ""}" style="--v:${v / 53};--i:${j}"><span class="pc-n">${n}</span><span class="pc-bar"><i></i></span><b>${v} g</b></div>`,
+          )
+          .join(
+            "",
+          )}<p class="nt-foot">Source: Nutritive value of foods, ICMR, JFST (as printed on the pack). One 30 g serve of Century Soya Chunks provides 35% more protein than one 40 g serve of paneer.</p></div></div>`
+        : ""
+      }
   </div>`
       : ""
-  }
+    }
   <div class="pd-sec"><h2 class="reveal"><span class="bar">You may</span> also like</h2><div class="rel" id="rel"></div></div>
  </div></div>`;
   splitHeads(pv);
@@ -1312,16 +1309,16 @@ function renderProduct(id) {
   const main = pv.querySelector("#pdMain");
   pv.querySelectorAll(".pd-thumbs button").forEach(
     (b) =>
-      (b.onclick = () => {
-        const j = +b.dataset.j;
-        main.classList.remove("swap");
-        void main.offsetWidth;
-        main.src = IMG[p.img[j]];
-        main.classList.add("swap");
-        pv.querySelectorAll(".pd-thumbs button").forEach((t) =>
-          t.setAttribute("aria-current", t === b),
-        );
-      }),
+    (b.onclick = () => {
+      const j = +b.dataset.j;
+      main.classList.remove("swap");
+      void main.offsetWidth;
+      main.src = IMG[p.img[j]];
+      main.classList.add("swap");
+      pv.querySelectorAll(".pd-thumbs button").forEach((t) =>
+        t.setAttribute("aria-current", t === b),
+      );
+    }),
   );
   const stage = pv.querySelector("#pdStage");
   pdFx(stage, p.id);
@@ -1676,7 +1673,8 @@ f.addEventListener("submit", (e) => {
       .then(({ ok, j }) => {
         if (ok) {
           f.reset();
-          toast("Thank you. We will reply soon.");
+          if (typeof gtag === "function") gtag("event", "generate_lead", { form_name: "enquiry" });
+          showThanks(d.name, "Your enquiry has reached our team. We will reply within one working day.");
         } else {
           err.textContent = (j && j.error) || "Something went wrong. Please try again.";
         }
@@ -1693,14 +1691,32 @@ f.addEventListener("submit", (e) => {
   const url =
     via === "wa"
       ? "https://wa.me/918699091009?text=" +
-        encodeURIComponent("Hello Century,\n\n" + body)
+      encodeURIComponent("Hello Century,\n\n" + body)
       : "mailto:century@thecentury.in?subject=" +
-        encodeURIComponent("Website enquiry: " + d.topic) +
-        "&body=" +
-        encodeURIComponent(body);
+      encodeURIComponent("Website enquiry: " + d.topic) +
+      "&body=" +
+      encodeURIComponent(body);
   window.open(url, "_blank");
   toast(via === "wa" ? "Opening WhatsApp…" : "Opening your email app…");
 });
+function showThanks(name, msg) {
+  const dlg = $("#thanksDlg");
+  if (!dlg) return toast("Thank you.");
+  $("#thxName").textContent = name ? ", " + name : "";
+  $("#thxMsg").textContent = msg;
+  if (typeof dlg.showModal === "function") dlg.showModal();
+  else dlg.setAttribute("open", "");
+}
+(function () {
+  const dlg = $("#thanksDlg");
+  if (!dlg) return;
+  const close = () => (dlg.close ? dlg.close() : dlg.removeAttribute("open"));
+  dlg.querySelector(".thx-x").addEventListener("click", close);
+  dlg.querySelector(".thx-ok").addEventListener("click", close);
+  dlg.addEventListener("click", (e) => {
+    if (e.target === dlg) close();
+  });
+})();
 function toast(t) {
   const el = $("#toast");
   el.textContent = t;
@@ -1919,7 +1935,7 @@ if (false) {
     cr.classList.toggle(
       "link",
       !t.closest(".card,.packrow a,.gal button") &&
-        !!t.closest("a,button,select,input,textarea,label"),
+      !!t.closest("a,button,select,input,textarea,label"),
     );
   });
   addEventListener("pointerdown", () => cr.classList.add("down"));
@@ -2000,7 +2016,8 @@ $("#cbForm").addEventListener("submit", (e) => {
     .then(({ ok, j }) => {
       if (ok) {
         $("#cbPhone").value = "";
-        toast("Thank you. We will call you back.");
+        if (typeof gtag === "function") gtag("event", "generate_lead", { form_name: "call_back" });
+        showThanks("", "We have your number and will call you back shortly.");
       } else {
         er.textContent = (j && j.error) || "Something went wrong. Please try again.";
       }
@@ -2437,19 +2454,19 @@ function pdFx(stage, id) {
     });
   }
   const pm = (e) => {
-      const r = stage.getBoundingClientRect();
-      mx = e.clientX - r.left;
-      my = e.clientY - r.top;
-    },
+    const r = stage.getBoundingClientRect();
+    mx = e.clientX - r.left;
+    my = e.clientY - r.top;
+  },
     pl = () => {
       mx = my = -999;
     };
   let downAt = 0,
     downX = 0;
   const pd = (e) => {
-      downAt = performance.now();
-      downX = e.clientX;
-    },
+    downAt = performance.now();
+    downX = e.clientX;
+  },
     pu = (e) => {
       if (
         performance.now() - downAt < 350 &&
@@ -3093,7 +3110,7 @@ document.querySelectorAll(".seal").forEach((s, n) => {
       1,
       Math.floor(
         tr.parentElement.clientWidth /
-          (cards[0].getBoundingClientRect().width + 22),
+        (cards[0].getBoundingClientRect().width + 22),
       ),
     );
   const maxI = () => Math.max(0, cards.length - vis());
