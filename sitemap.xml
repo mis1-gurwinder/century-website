@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://thecentury.in/</loc>
+    <lastmod>2026-11-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://thecentury.in/assets/images/og-share.jpg</image:loc>
+      <image:title>Century soya chunks, makhana and poha</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://thecentury.in/assets/images/logo.png</image:loc>
+      <image:title>Century logo</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://thecentury.in/p/soya-chunks/</loc>
+    <lastmod>2026-11-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://thecentury.in/assets/share/soya-chunks.jpg</image:loc>
+      <image:title>Soya Chunks</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://thecentury.in/p/soya-jumbo/</loc>
+    <lastmod>2026-11-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://thecentury.in/assets/share/soya-jumbo.jpg</image:loc>
+      <image:title>Soya Chunks Jumbo</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://thecentury.in/p/soya-granules/</loc>
+    <lastmod>2026-11-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://thecentury.in/assets/share/soya-granules.jpg</image:loc>
+      <image:title>Soya Granules</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://thecentury.in/p/soya-mini/</loc>
+    <lastmod>2026-11-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://thecentury.in/assets/share/soya-mini.jpg</image:loc>
+      <image:title>Soya Chunks Mini</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://thecentury.in/p/mk-classic/</loc>
+    <lastmod>2026-11-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://thecentury.in/assets/share/mk-classic.jpg</image:loc>
+      <image:title>Makhana Classic Select</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://thecentury.in/p/mk-puffed/</loc>
+    <lastmod>2026-11-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://thecentury.in/assets/share/mk-puffed.jpg</image:loc>
+      <image:title>Makhana Extra Puffed</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://thecentury.in/p/mk-mini/</loc>
+    <lastmod>2026-11-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://thecentury.in/assets/share/mk-mini.jpg</image:loc>
+      <image:title>Makhana Mini Prime</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://thecentury.in/p/besan/</loc>
+    <lastmod>2026-11-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://thecentury.in/assets/share/besan.jpg</image:loc>
+      <image:title>Fine Besan</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://thecentury.in/p/poha/</loc>
+    <lastmod>2026-11-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://thecentury.in/assets/share/poha.jpg</image:loc>
+      <image:title>Indori Poha</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://thecentury.in/p/kala-chana/</loc>
+    <lastmod>2026-11-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://thecentury.in/assets/share/kala-chana.jpg</image:loc>
+      <image:title>Chana Kala</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://thecentury.in/p/kabuli-medium/</loc>
+    <lastmod>2026-11-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://thecentury.in/assets/share/kabuli-medium.jpg</image:loc>
+      <image:title>Kabuli Chana Medium</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://thecentury.in/p/masoor-split/</loc>
+    <lastmod>2026-11-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://thecentury.in/assets/share/masoor-split.jpg</image:loc>
+      <image:title>Masoor Dal Split Bold</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://thecentury.in/p/masoor-whole/</loc>
+    <lastmod>2026-11-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://thecentury.in/assets/share/masoor-whole.jpg</image:loc>
+      <image:title>Masoor Whole Bold</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://thecentury.in/p/moong-dal/</loc>
+    <lastmod>2026-11-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://thecentury.in/assets/share/moong-dal.jpg</image:loc>
+      <image:title>Moong Dal (Yellow)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://thecentury.in/p/rajma-chitra/</loc>
+    <lastmod>2026-11-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://thecentury.in/assets/share/rajma-chitra.jpg</image:loc>
+      <image:title>Rajmah Chitra (LSKB)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://thecentury.in/p/toor-dal/</loc>
+    <lastmod>2026-11-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://thecentury.in/assets/share/toor-dal.jpg</image:loc>
+      <image:title>Toor Dal (Yellow)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://thecentury.in/p/jaggery/</loc>
+    <lastmod>2026-11-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://thecentury.in/assets/share/jaggery.jpg</image:loc>
+      <image:title>Jaggery Powder Sachet</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://thecentury.in/p/jaggery-500g/</loc>
+    <lastmod>2026-11-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://thecentury.in/assets/share/jaggery-500g.jpg</image:loc>
+      <image:title>Jaggery Powder 500 g</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://thecentury.in/p/chilli/</loc>
+    <lastmod>2026-11-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://thecentury.in/assets/share/chilli.jpg</image:loc>
+      <image:title>Chilli Flakes Sachet</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://thecentury.in/p/oregano/</loc>
+    <lastmod>2026-11-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://thecentury.in/assets/share/oregano.jpg</image:loc>
+      <image:title>Italian Oregano Seasoning</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://thecentury.in/p/chana-dal/</loc>
+    <lastmod>2026-11-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://thecentury.in/assets/share/chana-dal.jpg</image:loc>
+      <image:title>Chana Dal</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://thecentury.in/p/mix-dal/</loc>
+    <lastmod>2026-11-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://thecentury.in/assets/share/mix-dal.jpg</image:loc>
+      <image:title>Mix Dal</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://thecentury.in/p/lobiya-white/</loc>
+    <lastmod>2026-11-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://thecentury.in/assets/share/lobiya-white.jpg</image:loc>
+      <image:title>Lobiya White</image:title>
+    </image:image>
+  </url>
+</urlset>

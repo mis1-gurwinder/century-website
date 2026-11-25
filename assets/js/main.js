@@ -534,45 +534,20 @@ function lzScan(root) {
   });
 }
 const IMG_ALT = {
-  sc: "Century Soya Chunks pack",
-  "sc-34": "Century Soya Chunks pack",
-  "sc-back": "Century Soya Chunks pack back",
-  "sc-top": "Century Soya Chunks pack top",
-  scj: "Century Soya Jumbo chunks pack",
-  "scj-34": "Century Soya Jumbo chunks pack",
-  "scj-top": "Century Soya Jumbo chunks pack top",
-  "scj-back": "Century Soya Jumbo chunks pack back",
-  sg: "Century Soya Granules pack",
-  "sg-34": "Century Soya Granules pack",
-  "sg-top": "Century Soya Granules pack top",
-  "sg-back": "Century Soya Granules pack back",
-  scm: "Century Soya Mini chunks pack",
-  "scm-34": "Century Soya Mini chunks pack",
-  "scm-top": "Century Soya Mini chunks pack top",
-  "scm-back": "Century Soya Mini chunks pack back",
-  "mk-classic": "Century Makhana Classic Select pack",
-  "mk-puffed": "Century Puffed Makhana pack",
-  "mk-mini": "Century Mini Makhana pack",
-  besan: "Century Besan gram flour pack",
-  poha: "Century Poha flattened rice pack",
-  jaggery: "Century Jaggery Powder",
-  "jaggery-front": "Century Jaggery Powder pack front",
-  "jaggery-500g": "Century Jaggery Powder 500 g pack",
-  oregano: "Century Oregano seasoning",
-  chilli: "Century Chilli powder",
-  plant1: "Century manufacturing plant",
-  plant2: "Century manufacturing plant and silos",
-  plant3: "Century manufacturing plant",
-  plant4: "Century manufacturing plant",
-  plant5: "Century manufacturing plant",
-  plant6: "Century manufacturing plant",
-  aerial: "Aerial view of the Century manufacturing site",
-  aerial2: "Aerial view of the Century manufacturing site",
+  sc: "Century Soya Chunks pack", "sc-34": "Century Soya Chunks pack", "sc-back": "Century Soya Chunks pack back", "sc-top": "Century Soya Chunks pack top",
+  scj: "Century Soya Jumbo chunks pack", "scj-34": "Century Soya Jumbo chunks pack", "scj-top": "Century Soya Jumbo chunks pack top", "scj-back": "Century Soya Jumbo chunks pack back",
+  sg: "Century Soya Granules pack", "sg-34": "Century Soya Granules pack", "sg-top": "Century Soya Granules pack top", "sg-back": "Century Soya Granules pack back",
+  scm: "Century Soya Mini chunks pack", "scm-34": "Century Soya Mini chunks pack", "scm-top": "Century Soya Mini chunks pack top", "scm-back": "Century Soya Mini chunks pack back",
+  "mk-classic": "Century Makhana Classic Select pack", "mk-puffed": "Century Puffed Makhana pack", "mk-mini": "Century Mini Makhana pack",
+  besan: "Century Besan gram flour pack", poha: "Century Poha flattened rice pack",
+  jaggery: "Century Jaggery Powder", "jaggery-front": "Century Jaggery Powder pack front", "jaggery-500g": "Century Jaggery Powder 500 g pack",
+  oregano: "Century Oregano seasoning", chilli: "Century Chilli powder",
+  plant1: "Century manufacturing plant", plant2: "Century manufacturing plant and silos", plant3: "Century manufacturing plant", plant4: "Century manufacturing plant", plant5: "Century manufacturing plant", plant6: "Century manufacturing plant",
+  aerial: "Aerial view of the Century manufacturing site", aerial2: "Aerial view of the Century manufacturing site",
   logo: "Century logo",
 };
 document.querySelectorAll("img[data-k]").forEach((i) => {
-  if (!i.getAttribute("alt"))
-    i.alt = IMG_ALT[i.dataset.k] || "Century pulses and food product";
+  if (!i.getAttribute("alt")) i.alt = IMG_ALT[i.dataset.k] || "Century pulses and food product";
   const u = IMG[i.dataset.k];
   if (i.closest(".hero .slide.active,header,#loader")) i.src = u;
   else i.dataset.lz = u;
@@ -1697,27 +1672,17 @@ f.addEventListener("submit", (e) => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(d),
     })
-      .then((r) =>
-        r
-          .json()
-          .catch(() => ({ ok: false }))
-          .then((j) => ({ ok: r.ok && j.ok, j })),
-      )
+      .then((r) => r.json().catch(() => ({ ok: false })).then((j) => ({ ok: r.ok && j.ok, j })))
       .then(({ ok, j }) => {
         if (ok) {
           f.reset();
-          showThanks(
-            d.name,
-            "Your enquiry has reached our team. We will reply within one working day.",
-          );
+          toast("Thank you. We will reply soon.");
         } else {
-          err.textContent =
-            (j && j.error) || "Something went wrong. Please try again.";
+          err.textContent = (j && j.error) || "Something went wrong. Please try again.";
         }
       })
       .catch(() => {
-        err.textContent =
-          "Network issue. Please try again or call 1800 296 7999.";
+        err.textContent = "Network issue. Please try again or call 1800 296 7999.";
       })
       .finally(() => {
         if (btn) btn.disabled = false;
@@ -1736,24 +1701,6 @@ f.addEventListener("submit", (e) => {
   window.open(url, "_blank");
   toast(via === "wa" ? "Opening WhatsApp…" : "Opening your email app…");
 });
-function showThanks(name, msg) {
-  const dlg = $("#thanksDlg");
-  if (!dlg) return toast("Thank you.");
-  $("#thxName").textContent = name ? ", " + name : "";
-  $("#thxMsg").textContent = msg;
-  if (typeof dlg.showModal === "function") dlg.showModal();
-  else dlg.setAttribute("open", "");
-}
-(function () {
-  const dlg = $("#thanksDlg");
-  if (!dlg) return;
-  const close = () => (dlg.close ? dlg.close() : dlg.removeAttribute("open"));
-  dlg.querySelector(".thx-x").addEventListener("click", close);
-  dlg.querySelector(".thx-ok").addEventListener("click", close);
-  dlg.addEventListener("click", (e) => {
-    if (e.target === dlg) close();
-  });
-})();
 function toast(t) {
   const el = $("#toast");
   el.textContent = t;
@@ -2049,19 +1996,13 @@ $("#cbForm").addEventListener("submit", (e) => {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ phone: v }),
   })
-    .then((r) =>
-      r
-        .json()
-        .catch(() => ({ ok: false }))
-        .then((j) => ({ ok: r.ok && j.ok, j })),
-    )
+    .then((r) => r.json().catch(() => ({ ok: false })).then((j) => ({ ok: r.ok && j.ok, j })))
     .then(({ ok, j }) => {
       if (ok) {
         $("#cbPhone").value = "";
-        showThanks("", "We have your number and will call you back shortly.");
+        toast("Thank you. We will call you back.");
       } else {
-        er.textContent =
-          (j && j.error) || "Something went wrong. Please try again.";
+        er.textContent = (j && j.error) || "Something went wrong. Please try again.";
       }
     })
     .catch(() => {
