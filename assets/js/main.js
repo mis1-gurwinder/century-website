@@ -1240,7 +1240,7 @@ function renderProduct(id) {
   pv.innerHTML = `<div class="pd"><div class="wrap">
   <nav class="crumbs" aria-label="Breadcrumb"><a href="#home">Home</a><span>/</span><a href="#products">Products</a><span>/</span><a href="#products/${p.cat}">${catName(p.cat)}</a><span>/</span><span aria-current="page">${p.name}</span></nav>
   <div class="pd-grid">
-   <div class="pd-media"><div class="pd-stage" id="pdStage"><span class="ring"></span><span class="ring r2"></span><span class="gsh"></span><i class="spk" style="left:14%;top:30%;animation-delay:0s"></i><i class="spk" style="left:80%;top:22%;animation-delay:0.7s"></i><i class="spk" style="left:72%;top:70%;animation-delay:1.3s"></i><i class="spk" style="left:22%;top:78%;animation-delay:1.9s"></i><i class="spk" style="left:50%;top:10%;animation-delay:1.1s"></i><img decoding="async" class="mi ${p.full ? "full" : ""}" id="pdMain" src="${IMG[p.img[0]]}" alt="${p.name}"><div class="glass g1"><b>${p.tag}</b>${p.type}</div><div class="glass g2"><b>${p.wt}</b>Pack size</div></div>
+   <div class="pd-media"><div class="pd-stage" id="pdStage"><span class="ring"></span><span class="ring r2"></span><span class="gsh"></span><i class="spk" style="left:14%;top:30%;animation-delay:0s"></i><i class="spk" style="left:80%;top:22%;animation-delay:0.7s"></i><i class="spk" style="left:72%;top:70%;animation-delay:1.3s"></i><i class="spk" style="left:22%;top:78%;animation-delay:1.9s"></i><i class="spk" style="left:50%;top:10%;animation-delay:1.1s"></i><img decoding="async" class="mi ${p.full ? "full" : ""}" id="pdMain" src="${IMG[p.img[0]]}" alt="${p.name}"></div>
     ${p.img.length > 1 ? `<div class="pd-thumbs">${p.img.map((k, j) => `<button aria-label="View ${j + 1}" aria-current="${j === 0}" data-j="${j}" style="animation-delay:${0.6 + j * 0.08}s"><img decoding="async" data-lz="${IMG[k]}" alt=""></button>`).join("")}</div>` : ""}</div>
    <div class="pd-info"><span class="cat-chip">${catName(p.cat)}</span><h1>${words}</h1>${p.hi ? `<div class="hn" lang="hi">${p.hi}</div>` : ""}<div class="ln">${p.line}</div><p class="ds">${p.desc}</p>
     <div class="qchips"><div class="qchip"><small>Pack size</small><b>${p.wt}</b></div><div class="qchip"><small>Type</small><b>${p.type}</b></div><div class="qchip"><small>Diet</small><b>100% veg</b></div></div>
@@ -1658,17 +1658,24 @@ f.addEventListener("submit", (e) => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(d),
     })
-      .then((r) => r.json().catch(() => ({ ok: false })).then((j) => ({ ok: r.ok && j.ok, j })))
+      .then((r) =>
+        r
+          .json()
+          .catch(() => ({ ok: false }))
+          .then((j) => ({ ok: r.ok && j.ok, j })),
+      )
       .then(({ ok, j }) => {
         if (ok) {
           f.reset();
           toast("Thank you. We will reply soon.");
         } else {
-          err.textContent = (j && j.error) || "Something went wrong. Please try again.";
+          err.textContent =
+            (j && j.error) || "Something went wrong. Please try again.";
         }
       })
       .catch(() => {
-        err.textContent = "Network issue. Please try again or call 1800 296 7999.";
+        err.textContent =
+          "Network issue. Please try again or call 1800 296 7999.";
       })
       .finally(() => {
         if (btn) btn.disabled = false;
@@ -1982,13 +1989,19 @@ $("#cbForm").addEventListener("submit", (e) => {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ phone: v }),
   })
-    .then((r) => r.json().catch(() => ({ ok: false })).then((j) => ({ ok: r.ok && j.ok, j })))
+    .then((r) =>
+      r
+        .json()
+        .catch(() => ({ ok: false }))
+        .then((j) => ({ ok: r.ok && j.ok, j })),
+    )
     .then(({ ok, j }) => {
       if (ok) {
         $("#cbPhone").value = "";
         toast("Thank you. We will call you back.");
       } else {
-        er.textContent = (j && j.error) || "Something went wrong. Please try again.";
+        er.textContent =
+          (j && j.error) || "Something went wrong. Please try again.";
       }
     })
     .catch(() => {
