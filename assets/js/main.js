@@ -533,7 +533,46 @@ function lzScan(root) {
       lzLoad(i);
   });
 }
+const IMG_ALT = {
+  sc: "Century Soya Chunks pack",
+  "sc-34": "Century Soya Chunks pack",
+  "sc-back": "Century Soya Chunks pack back",
+  "sc-top": "Century Soya Chunks pack top",
+  scj: "Century Soya Jumbo chunks pack",
+  "scj-34": "Century Soya Jumbo chunks pack",
+  "scj-top": "Century Soya Jumbo chunks pack top",
+  "scj-back": "Century Soya Jumbo chunks pack back",
+  sg: "Century Soya Granules pack",
+  "sg-34": "Century Soya Granules pack",
+  "sg-top": "Century Soya Granules pack top",
+  "sg-back": "Century Soya Granules pack back",
+  scm: "Century Soya Mini chunks pack",
+  "scm-34": "Century Soya Mini chunks pack",
+  "scm-top": "Century Soya Mini chunks pack top",
+  "scm-back": "Century Soya Mini chunks pack back",
+  "mk-classic": "Century Makhana Classic Select pack",
+  "mk-puffed": "Century Puffed Makhana pack",
+  "mk-mini": "Century Mini Makhana pack",
+  besan: "Century Besan gram flour pack",
+  poha: "Century Poha flattened rice pack",
+  jaggery: "Century Jaggery Powder",
+  "jaggery-front": "Century Jaggery Powder pack front",
+  "jaggery-500g": "Century Jaggery Powder 500 g pack",
+  oregano: "Century Oregano seasoning",
+  chilli: "Century Chilli powder",
+  plant1: "Century manufacturing plant",
+  plant2: "Century manufacturing plant and silos",
+  plant3: "Century manufacturing plant",
+  plant4: "Century manufacturing plant",
+  plant5: "Century manufacturing plant",
+  plant6: "Century manufacturing plant",
+  aerial: "Aerial view of the Century manufacturing site",
+  aerial2: "Aerial view of the Century manufacturing site",
+  logo: "Century logo",
+};
 document.querySelectorAll("img[data-k]").forEach((i) => {
+  if (!i.getAttribute("alt"))
+    i.alt = IMG_ALT[i.dataset.k] || "Century pulses and food product";
   const u = IMG[i.dataset.k];
   if (i.closest(".hero .slide.active,header,#loader")) i.src = u;
   else i.dataset.lz = u;
@@ -1334,7 +1373,7 @@ function renderProduct(id) {
     pv.querySelectorAll(".pd-thumbs button")[cur].click();
   });
   pdBar.innerHTML = `<a class="btn btn-g" href="#contact" data-topic="${topic}" data-msg="Enquiry about ${p.name} (${p.wt})">Enquire</a><a class="btn btn-y" target="_blank" rel="noopener" href="https://wa.me/918699091009?text=${encodeURIComponent("Hello Century, I would like to know more about " + p.name + " (" + p.wt + ").")}">WhatsApp</a>`;
-  document.title = p.name + " — Century";
+  document.title = p.name + " | Century";
 }
 document.addEventListener("click", (e) => {
   const a = e.target.closest("[data-topic]");
@@ -1667,7 +1706,10 @@ f.addEventListener("submit", (e) => {
       .then(({ ok, j }) => {
         if (ok) {
           f.reset();
-          toast("Thank you. We will reply soon.");
+          showThanks(
+            d.name,
+            "Your enquiry has reached our team. We will reply within one working day.",
+          );
         } else {
           err.textContent =
             (j && j.error) || "Something went wrong. Please try again.";
@@ -1694,6 +1736,24 @@ f.addEventListener("submit", (e) => {
   window.open(url, "_blank");
   toast(via === "wa" ? "Opening WhatsApp…" : "Opening your email app…");
 });
+function showThanks(name, msg) {
+  const dlg = $("#thanksDlg");
+  if (!dlg) return toast("Thank you.");
+  $("#thxName").textContent = name ? ", " + name : "";
+  $("#thxMsg").textContent = msg;
+  if (typeof dlg.showModal === "function") dlg.showModal();
+  else dlg.setAttribute("open", "");
+}
+(function () {
+  const dlg = $("#thanksDlg");
+  if (!dlg) return;
+  const close = () => (dlg.close ? dlg.close() : dlg.removeAttribute("open"));
+  dlg.querySelector(".thx-x").addEventListener("click", close);
+  dlg.querySelector(".thx-ok").addEventListener("click", close);
+  dlg.addEventListener("click", (e) => {
+    if (e.target === dlg) close();
+  });
+})();
 function toast(t) {
   const el = $("#toast");
   el.textContent = t;
@@ -1998,7 +2058,7 @@ $("#cbForm").addEventListener("submit", (e) => {
     .then(({ ok, j }) => {
       if (ok) {
         $("#cbPhone").value = "";
-        toast("Thank you. We will call you back.");
+        showThanks("", "We have your number and will call you back shortly.");
       } else {
         er.textContent =
           (j && j.error) || "Something went wrong. Please try again.";
@@ -3162,11 +3222,11 @@ menuT.onclick = () => {
 const curtain = $(".curtain");
 let first = true;
 const TITLES = {
-  home: "Century — Soya, Makhana, Besan, Poha & HoReCa Sachets",
-  products: "Products — Century",
-  services: "Our Services — Century",
-  about: "About Us — Century",
-  contact: "Contact — Century",
+  home: "Century | Soya Chunks, Makhana, Besan, Poha & Jaggery | Dinero FoodWorks",
+  products: "Products: Soya Chunks, Makhana, Pulses, Besan, Poha | Century",
+  services: "Our Services for Retail and HoReCa | Century",
+  about: "About Century and Dinero FoodWorks | Century",
+  contact: "Contact Century | Enquiry, WhatsApp and Call Back",
 };
 function apply() {
   const h = (location.hash || "#home").slice(1);
