@@ -455,9 +455,6 @@
       .legacy-hero[hidden] {
         display: none !important;
       }
-      section.hero {
-        background-color: transparent !important;
-      }
       /* Stage hero: one chapter per product, looping */
       .stage-hero {
         position: relative;
@@ -773,239 +770,9 @@
       <!-- HOME -->
       <div class="view" id="v-home">
         <section class="hero">
-          <section
-            class="stage-hero"
-            id="stageHero"
-            aria-roledescription="carousel"
-            aria-label="Century product range"
-          >
-            <div class="sh-body">
-              <article
-                class="sh-slide is-active"
-                data-bg="#136C37"
-                aria-label="1 of 5"
-              >
-                <span class="sh-word" aria-hidden="true">Soya</span>
-                <div class="sh-copy">
-                  <h2>53% pure plant protein.</h2>
-                  <p>
-                    Soya chunks in Jumbo, Mini and Granules. 99% fat-free, vegan
-                    and super soft.
-                  </p>
-                  <a class="btn btn-y" href="#product/soya-chunks"
-                    >See the soya range</a
-                  >
-                </div>
-                <div class="sh-pack">
-                  <img
-                    src="assets/images/sc.webp"
-                    alt="Century Soya Chunks pack"
-                    width="200"
-                    height="260"
-                  />
-                </div>
-              </article>
-              <article
-                class="sh-slide"
-                data-bg="#0C4D27"
-                aria-label="2 of 5"
-                aria-hidden="true"
-              >
-                <span class="sh-word" aria-hidden="true">Makhana</span>
-                <div class="sh-copy">
-                  <h2>Makhana, graded by size.</h2>
-                  <p>
-                    Classic Select for everyday, Extra Puffed for bold snacking,
-                    Mini Prime for kheer and gravies.
-                  </p>
-                  <a class="btn btn-y" href="#product/mk-classic"
-                    >See the makhana range</a
-                  >
-                </div>
-                <div class="sh-pack">
-                  <img
-                    src="assets/images/mk-classic.webp"
-                    alt="Century Makhana Classic Select pack"
-                    width="200"
-                    height="260"
-                  />
-                </div>
-              </article>
-              <article
-                class="sh-slide"
-                data-bg="#6B4A12"
-                aria-label="3 of 5"
-                aria-hidden="true"
-              >
-                <span class="sh-word" aria-hidden="true">Besan</span>
-                <div class="sh-copy">
-                  <h2>Besan for everyday cooking.</h2>
-                  <p>
-                    Gram flour from our own Quality Certified manufacturing
-                    units, packed for every kitchen.
-                  </p>
-                  <a class="btn btn-y" href="#product/besan"
-                    >See the besan range</a
-                  >
-                </div>
-                <div class="sh-pack">
-                  <img
-                    src="assets/images/besan.webp"
-                    alt="Century Besan pack"
-                    width="200"
-                    height="260"
-                  />
-                </div>
-              </article>
-              <article
-                class="sh-slide"
-                data-bg="#5A2B16"
-                aria-label="4 of 5"
-                aria-hidden="true"
-              >
-                <span class="sh-word" aria-hidden="true">Poha</span>
-                <div class="sh-copy">
-                  <h2>Poha, for quick breakfasts.</h2>
-                  <p>
-                    Flattened rice from our own Quality Certified manufacturing
-                    units.
-                  </p>
-                  <a class="btn btn-y" href="#product/poha"
-                    >See the poha range</a
-                  >
-                </div>
-                <div class="sh-pack">
-                  <img
-                    src="assets/images/poha.webp"
-                    alt="Century Poha pack"
-                    width="200"
-                    height="260"
-                  />
-                </div>
-              </article>
-              <article
-                class="sh-slide"
-                data-bg="#3B2A12"
-                aria-label="5 of 5"
-                aria-hidden="true"
-              >
-                <span class="sh-word" aria-hidden="true">Jaggery</span>
-                <div class="sh-copy">
-                  <h2>Jaggery in 5 g sachets.</h2>
-                  <p>
-                    Pure jaggery made from sugarcane, with no chemicals or added
-                    colour. It dissolves in tea, coffee and smoothies.
-                  </p>
-                  <a class="btn btn-y" href="#product/jaggery"
-                    >See the jaggery range</a
-                  >
-                </div>
-                <div class="sh-pack">
-                  <img
-                    src="assets/images/jaggery-front.webp"
-                    alt="Century Jaggery sachet"
-                    width="200"
-                    height="260"
-                  />
-                </div>
-              </article>
-            </div>
-            <div class="sh-controls">
-              <button
-                class="sh-arrow sh-prev"
-                type="button"
-                aria-label="Previous product"
-              >
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path
-                    d="M15 6l-6 6 6 6"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-              </button>
-              <div
-                class="sh-tabs"
-                role="tablist"
-                aria-label="Choose a product line"
-              >
-                <button
-                  class="sh-tab"
-                  role="tab"
-                  type="button"
-                  aria-selected="true"
-                >
-                  Soya<i class="sh-fill" aria-hidden="true"></i>
-                </button>
-                <button
-                  class="sh-tab"
-                  role="tab"
-                  type="button"
-                  aria-selected="false"
-                  tabindex="-1"
-                >
-                  Makhana<i class="sh-fill" aria-hidden="true"></i>
-                </button>
-                <button
-                  class="sh-tab"
-                  role="tab"
-                  type="button"
-                  aria-selected="false"
-                  tabindex="-1"
-                >
-                  Besan<i class="sh-fill" aria-hidden="true"></i>
-                </button>
-                <button
-                  class="sh-tab"
-                  role="tab"
-                  type="button"
-                  aria-selected="false"
-                  tabindex="-1"
-                >
-                  Poha<i class="sh-fill" aria-hidden="true"></i>
-                </button>
-                <button
-                  class="sh-tab"
-                  role="tab"
-                  type="button"
-                  aria-selected="false"
-                  tabindex="-1"
-                >
-                  Jaggery<i class="sh-fill" aria-hidden="true"></i>
-                </button>
-              </div>
-              <button
-                class="sh-arrow sh-next"
-                type="button"
-                aria-label="Next product"
-              >
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path
-                    d="M9 6l6 6-6 6"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-              </button>
-            </div>
-            <p class="sh-supply">
-              <span class="cert"
-                ><span class="cert-btn cert-static"
-                  ><span class="cert-dot" aria-hidden="true"></span>FSSC 22000
-                  certified</span
-                ></span
-              ><a href="#services">Supply for your business</a>
-            </p>
-          </section>
-          <div class="legacy-hero" hidden>
+          <div class="legacy-hero">
             <canvas id="seeds" aria-hidden="true"></canvas>
-            <div class="slider" id="heroSlider" data-auto="6000">
+            <div class="slider" id="heroSlider" data-auto="3500">
               <div class="slides">
                 <div class="slide active" data-bg="#136C37">
                   <div class="wrap hero-grid">
@@ -1257,36 +1024,6 @@
                 <div class="s-dots"></div>
                 <button class="s-arr next" aria-label="Next slide"></button>
               </div>
-            </div>
-            <div class="hero-why" aria-label="Why Century">
-              <a class="why-item" href="#about">
-                <strong>Since 1980</strong>
-                <span
-                  >The Century brand. Our family business, Dinero FoodWorks, has
-                  been in food since 1958.</span
-                >
-              </a>
-              <a class="why-item" href="#services">
-                <strong>FSSC 22000</strong>
-                <span
-                  >Food safety certified manufacturing, in our own Punjab
-                  units.</span
-                >
-              </a>
-              <a class="why-item" href="#products">
-                <strong>Made by us</strong>
-                <span
-                  >We process and pack our own range, so quality is checked at
-                  every step.</span
-                >
-              </a>
-              <a class="why-item" href="#products">
-                <strong>Pure ingredients</strong>
-                <span
-                  >Soya chunks with 53% pure plant protein, and unpolished
-                  pulses.</span
-                >
-              </a>
             </div>
           </div>
           <div
@@ -3040,10 +2777,9 @@
         }
       }
     </style>
-    <script src="assets/js/hero.js?v=20261203"></script>
-    <script src="assets/js/main.js?v=20261203"></script>
+    <script src="assets/js/main.js?v=20261204"></script>
     <script src="assets/js/vendor/motion.min.js?v=20261125"></script>
-    <script src="assets/js/brand.js?v=20261203"></script>
+    <script src="assets/js/brand.js?v=20261204"></script>
     <script src="assets/js/glass.js?v=20261125"></script>
     <script src="assets/js/fx.js?v=20261125"></script>
     <script>
