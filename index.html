@@ -455,191 +455,174 @@
       .legacy-hero[hidden] {
         display: none !important;
       }
-      /* Orbit hero */
-      .orbit-hero {
+      /* Stage hero: one chapter per product, looping */
+      .stage-hero {
         position: relative;
         z-index: 1;
-        background: var(--ob, #136c37);
+        background: var(--sb, #136c37);
         transition: background-color 1s ease;
         color: #fff;
         overflow: hidden;
-        padding: 28px 16px 36px;
+        padding: 96px 16px 28px;
       }
-      .orbit-hero:focus {
-        outline: none;
-      }
-      .oh-wrap {
+      .sh-top {
         max-width: 1180px;
         margin: 0 auto;
-        display: grid;
-        gap: 28px;
-        align-items: center;
-      }
-      @media (min-width: 900px) {
-        .oh-wrap {
-          grid-template-columns: 1fr 1fr;
-          gap: 56px;
-        }
-      }
-      .oh-copy {
-        display: grid;
-        gap: 14px;
-        justify-items: start;
-        min-width: 0;
-      }
-      .orbit-hero h1 {
-        margin: 0;
-        font-size: clamp(2.6rem, 1.6rem + 4vw, 4.6rem);
-        line-height: 1;
-        font-weight: 900;
-        letter-spacing: -0.035em;
-      }
-      .orbit-hero h1 em {
-        font-style: italic;
-        font-weight: 300;
-        color: #f5b520;
-      }
-      .oh-cat-row {
-        margin: 8px 0 0;
-      }
-      .oh-cat {
-        font-family: "Fraunces", Georgia, serif;
-        font-weight: 600;
-        font-size: 1.35rem;
-        color: #f5b520;
-      }
-      .oh-line {
-        margin: 0;
-        font-size: 1.05rem;
-        color: rgba(255, 255, 255, 0.9);
-      }
-      .oh-lede {
-        margin: 6px 0 0;
-        max-width: 34em;
-        font-size: 0.98rem;
-        line-height: 1.6;
-        color: rgba(255, 255, 255, 0.85);
-      }
-      .oh-actions {
         display: flex;
-        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
         gap: 12px;
-        margin-top: 6px;
+        flex-wrap: wrap;
       }
-      .oh-dial {
-        position: relative;
-        width: min(100%, 520px);
-        aspect-ratio: 1;
-        margin: 0 auto;
-      }
-      .oh-ring {
-        position: absolute;
-        inset: 6%;
-        border-radius: 50%;
-        border: 1px dashed rgba(255, 255, 255, 0.28);
-      }
-      .oh-core {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        width: 38%;
-        aspect-ratio: 1;
-        transform: translate(-50%, -50%);
-        border-radius: 50%;
-        display: grid;
-        place-content: center;
-        text-align: center;
-        background: radial-gradient(
-          circle at 35% 30%,
-          rgba(255, 255, 255, 0.24),
-          rgba(255, 255, 255, 0.04)
-        );
-        z-index: 0;
-      }
-      .oh-num {
+      .sh-brand {
+        margin: 0;
         font-family: "Fraunces", Georgia, serif;
-        font-weight: 600;
-        font-size: clamp(2.4rem, 4vw, 3.4rem);
-        line-height: 1;
-        color: #fff;
+        font-size: 1.1rem;
+        color: rgba(255, 255, 255, 0.92);
       }
-      .oh-core small {
-        font-size: 0.8rem;
-        letter-spacing: 0.08em;
-        color: rgba(255, 255, 255, 0.75);
+      .sh-brand em {
+        color: #f5b520;
       }
-      .oh-pack {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        width: 36%;
-        display: block;
-        will-change: transform, opacity;
-        transition:
-          transform 0.9s cubic-bezier(0.22, 1, 0.36, 1),
-          opacity 0.9s ease;
-        cursor: pointer;
-      }
-      .oh-pack img {
-        display: block;
-        width: 100%;
-        height: auto;
-        filter: drop-shadow(0 22px 26px rgba(0, 0, 0, 0.38));
-        transition: transform 0.4s ease;
-      }
-      .oh-pack.is-active:hover img {
-        transform: scale(1.04) rotate(-1deg);
-      }
-      .oh-pack:focus-visible {
-        outline: 3px solid #f5b520;
-        outline-offset: 6px;
-        border-radius: 12px;
-      }
-      .oh-tabs {
+      .sh-body {
+        position: relative;
         display: grid;
-        grid-template-columns: repeat(5, minmax(0, 1fr));
-        gap: 10px;
         max-width: 1180px;
         margin: 28px auto 0;
       }
-      .oh-tab {
+      .sh-slide {
+        grid-area: 1 / 1;
+        position: relative;
+        display: grid;
+        gap: 22px;
+        align-items: center;
+        opacity: 0;
+        visibility: hidden;
+        transition:
+          opacity 0.8s ease,
+          visibility 0.8s;
+      }
+      .sh-slide.is-active {
+        opacity: 1;
+        visibility: visible;
+      }
+      @media (min-width: 900px) {
+        .sh-slide {
+          grid-template-columns: 1.05fr 0.95fr;
+          gap: 48px;
+          min-height: 440px;
+        }
+      }
+      .sh-word {
+        position: absolute;
+        left: -2%;
+        bottom: -8%;
+        font:
+          900 clamp(84px, 17vw, 230px)/0.8 Poppins,
+          system-ui,
+          sans-serif;
+        letter-spacing: -0.04em;
+        text-transform: uppercase;
+        color: transparent;
+        -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.2);
+        white-space: nowrap;
+        pointer-events: none;
+        z-index: 0;
+      }
+      .sh-copy {
+        position: relative;
+        z-index: 2;
+        display: grid;
+        gap: 16px;
+        justify-items: start;
+        min-width: 0;
+      }
+      .sh-copy h2 {
+        margin: 0;
+        font-size: clamp(2.1rem, 1.2rem + 3.4vw, 4.1rem);
+        line-height: 1.02;
+        font-weight: 900;
+        letter-spacing: -0.035em;
+      }
+      .sh-copy p {
+        margin: 0;
+        max-width: 30em;
+        font-size: 1.02rem;
+        line-height: 1.6;
+        color: rgba(255, 255, 255, 0.88);
+      }
+      .sh-pack {
+        position: relative;
+        z-index: 2;
+        justify-self: center;
+        width: min(70%, 340px);
+        transform: rotate(-4deg);
+        transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+      .sh-slide.is-active .sh-pack {
+        transform: rotate(-4deg) scale(1);
+      }
+      .sh-slide:not(.is-active) .sh-pack {
+        transform: rotate(-4deg) scale(0.92);
+      }
+      .sh-pack img {
+        display: block;
+        width: 100%;
+        height: auto;
+        filter: drop-shadow(0 30px 34px rgba(0, 0, 0, 0.4));
+      }
+      .sh-controls {
+        max-width: 1180px;
+        margin: 26px auto 0;
+        display: flex;
+        align-items: flex-end;
+        gap: 14px;
+      }
+      .sh-arrow {
+        flex: none;
+        width: 46px;
+        height: 46px;
+        border-radius: 50%;
+        border: 1px solid rgba(255, 255, 255, 0.35);
+        background: rgba(255, 255, 255, 0.1);
+        color: #fff;
+        display: grid;
+        place-items: center;
+        cursor: pointer;
+        transition: background-color 0.25s;
+      }
+      .sh-arrow:hover {
+        background: rgba(255, 255, 255, 0.2);
+      }
+      .sh-arrow:focus-visible {
+        outline: 3px solid #f5b520;
+        outline-offset: 3px;
+      }
+      .sh-arrow svg {
+        width: 20px;
+        height: 20px;
+      }
+      .sh-tabs {
+        flex: 1;
+        min-width: 0;
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 10px;
+      }
+      .sh-tab {
         position: relative;
         min-width: 0;
-        text-align: left;
         padding: 12px 0 0;
         background: transparent;
         border: 0;
         color: rgba(255, 255, 255, 0.7);
         font:
-          500 0.9rem/1.2 Poppins,
+          600 0.9rem/1.2 Poppins,
           system-ui,
           sans-serif;
+        text-align: left;
         cursor: pointer;
       }
-      .oh-tab small {
-        display: block;
-        font-family: "Fraunces", Georgia, serif;
-        font-size: 0.8rem;
-        color: #f5b520;
-      }
-      .oh-tab[aria-selected="true"] {
-        color: #fff;
-      }
-      .oh-tab:focus-visible {
-        outline: 3px solid #f5b520;
-        outline-offset: 4px;
-        border-radius: 6px;
-      }
-      .oh-fill {
-        position: absolute;
-        left: 0;
-        top: 0;
-        height: 3px;
-        width: 0;
-        background: #f5b520;
-        border-radius: 3px;
-      }
-      .oh-tab::before {
+      .sh-tab::before {
         content: "";
         position: absolute;
         left: 0;
@@ -649,17 +632,31 @@
         background: rgba(255, 255, 255, 0.2);
         border-radius: 3px;
       }
-      .oh-tab:not([aria-selected="true"]) .oh-fill {
+      .sh-tab[aria-selected="true"] {
+        color: #fff;
+      }
+      .sh-tab:focus-visible {
+        outline: 3px solid #f5b520;
+        outline-offset: 4px;
+        border-radius: 6px;
+      }
+      .sh-fill {
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 3px;
+        width: 0;
+        background: #f5b520;
+        border-radius: 3px;
+      }
+      .sh-tab:not([aria-selected="true"]) .sh-fill {
         width: 0;
         animation: none;
       }
-      .oh-tab[aria-selected="true"] .oh-fill {
-        animation: ohFill 4.8s linear forwards;
+      .sh-tab[aria-selected="true"] .sh-fill {
+        animation: shFill 5.5s linear forwards;
       }
-      section.hero {
-        background-color: transparent !important;
-      }
-      @keyframes ohFill {
+      @keyframes shFill {
         from {
           width: 0;
         }
@@ -667,22 +664,41 @@
           width: 100%;
         }
       }
+      .sh-supply {
+        max-width: 1180px;
+        margin: 22px auto 0;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 16px;
+        font-size: 0.95rem;
+      }
+      .sh-supply a {
+        color: #fff;
+        text-decoration: underline;
+        text-underline-offset: 4px;
+      }
       @media (max-width: 640px) {
-        .oh-tab small {
-          font-size: 0.72rem;
+        .sh-tab {
+          font-size: 0.78rem;
         }
-        .oh-tab {
-          font-size: 0.8rem;
+        .sh-arrow {
+          width: 40px;
+          height: 40px;
+        }
+        .sh-controls {
+          gap: 8px;
         }
       }
       @media (prefers-reduced-motion: reduce) {
-        .oh-pack,
-        .orbit-hero,
-        .oh-pack img {
-          transition: none;
+        .sh-slide,
+        .sh-pack,
+        .stage-hero,
+        .sh-fill {
+          transition: none !important;
         }
-        .oh-fill {
-          animation: none !important;
+        .sh-tab[aria-selected="true"] .sh-fill {
+          animation: none;
         }
       }
     </style>
@@ -753,762 +769,10 @@
     <main>
       <!-- HOME -->
       <div class="view" id="v-home">
-        <!-- CENTURY HERO v4: cream wordmark card with product images behind, buttons, dark product panel -->
-        <style id="c-hero-css">
-          .c-hero {
-            position: relative;
-            overflow: hidden;
-            padding: 88px 16px 48px;
-            background: #0c2c19;
-            color: #f7f0dc;
-            font-family: Poppins, system-ui, sans-serif;
-          }
-          .c-hero * {
-            box-sizing: border-box;
-          }
-          .c-top {
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-            max-width: 1320px;
-            margin: 0 auto;
-            padding: clamp(28px, 4vw, 56px) clamp(20px, 3.5vw, 48px)
-              clamp(24px, 3vw, 40px);
-            background: #f7f0dc;
-            color: #0c2c19;
-            border-radius: 28px;
-          }
-          .c-bg {
-            position: absolute;
-            inset: 0;
-            pointer-events: none;
-            z-index: 0;
-          }
-          .c-bg img {
-            position: absolute;
-            width: clamp(120px, 12vw, 172px);
-            height: auto;
-            opacity: 0.24;
-            filter: saturate(0.7);
-            transform: rotate(var(--t, 0deg));
-            transition:
-              opacity 0.6s ease,
-              transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-          }
-          .c-top:hover .c-bg img {
-            opacity: 0.34;
-          }
-          .c-word {
-            position: relative;
-            z-index: 1;
-            margin: 0;
-            text-align: center;
-            font-weight: 900;
-            font-size: clamp(84px, 19vw, 300px);
-            line-height: 0.9;
-            letter-spacing: -0.05em;
-            white-space: nowrap;
-            color: #0c2c19;
-          }
-          .c-word .ch {
-            display: inline-block;
-            animation: cWordUp 1s cubic-bezier(0.22, 1, 0.36, 1) both;
-            animation-delay: var(--d, 0s);
-            transition:
-              color 0.3s,
-              transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-            cursor: default;
-          }
-          .c-word .ch:hover {
-            color: #136c37;
-            transform: translateY(-0.07em);
-          }
-          @keyframes cWordUp {
-            from {
-              opacity: 0;
-              transform: translateY(0.2em);
-            }
-            to {
-              opacity: 1;
-              transform: none;
-            }
-          }
-          .c-actions {
-            position: relative;
-            z-index: 2;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 12px 16px;
-            margin-top: clamp(18px, 2.6vw, 36px);
-          }
-          .c-group {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-          }
-          .c-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            min-height: 48px;
-            padding: 0 22px;
-            border-radius: 999px;
-            border: 1.5px solid #0c2c19;
-            background: transparent;
-            color: #0c2c19;
-            font:
-              600 15px/1 Poppins,
-              system-ui,
-              sans-serif;
-            text-decoration: none;
-            cursor: pointer;
-            transition:
-              background-color 0.25s,
-              color 0.25s,
-              transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
-              box-shadow 0.3s;
-          }
-          .c-btn:hover {
-            background: #0c2c19;
-            color: #f7f0dc;
-            transform: translateY(-2px);
-            box-shadow: 0 14px 26px -14px rgba(12, 44, 25, 0.6);
-          }
-          .c-btn.primary {
-            background: #0c2c19;
-            color: #f7f0dc;
-          }
-          .c-btn.primary:hover {
-            background: #136c37;
-          }
-          .c-btn .arr {
-            display: inline-block;
-            transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-          }
-          .c-btn:hover .arr {
-            transform: translateX(4px);
-          }
-          .c-btn:focus-visible {
-            outline: 3px solid #f5b520;
-            outline-offset: 3px;
-          }
-          .c-tel {
-            font-weight: 700;
-            font-size: 16px;
-          }
-          .c-panel {
-            position: relative;
-            max-width: 1320px;
-            margin: 16px auto 0;
-            min-height: 540px;
-            display: grid;
-            grid-template-columns: minmax(0, 1fr) minmax(0, 360px) 120px;
-            align-items: start;
-            gap: 32px;
-            padding: clamp(28px, 3.5vw, 48px) clamp(20px, 3.5vw, 48px);
-            background: #0a2415;
-            border-radius: 28px;
-          }
-          .c-info {
-            grid-column: 1;
-            grid-row: 1;
-            position: relative;
-            z-index: 2;
-            max-width: 340px;
-          }
-          .c-pack {
-            grid-column: 2;
-            grid-row: 1;
-            position: relative;
-            z-index: 3;
-            justify-self: center;
-            width: min(24vw, 340px);
-            margin-top: -200px;
-            pointer-events: none;
-          }
-          .c-pack img {
-            display: block;
-            width: 100%;
-            height: auto;
-            filter: drop-shadow(0 34px 34px rgba(0, 0, 0, 0.5));
-            transition: opacity 0.35s ease;
-          }
-          .c-info h2 {
-            margin: 0 0 14px;
-            font-size: clamp(1.9rem, 3vw, 2.8rem);
-            line-height: 1.05;
-            font-weight: 800;
-            letter-spacing: -0.02em;
-            color: #f7f0dc;
-          }
-          .c-info .c-line {
-            margin: 0 0 22px;
-            font-size: 14px;
-            line-height: 1.6;
-            color: rgba(247, 240, 220, 0.78);
-          }
-          .c-specs {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            display: grid;
-            gap: 10px;
-          }
-          .c-specs li {
-            display: grid;
-            gap: 2px;
-            font-size: 14px;
-            line-height: 1.4;
-            padding-left: 16px;
-            position: relative;
-          }
-          .c-specs li::before {
-            content: "";
-            position: absolute;
-            left: 0;
-            top: 7px;
-            width: 6px;
-            height: 6px;
-            border-radius: 2px;
-            background: #f5b520;
-          }
-          .c-specs b {
-            font-weight: 600;
-            color: #f7f0dc;
-          }
-          .c-specs span {
-            color: rgba(247, 240, 220, 0.7);
-          }
-          .c-cta {
-            display: inline-flex;
-            align-items: center;
-            margin-top: 28px;
-            min-height: 48px;
-            padding: 0 26px;
-            border-radius: 999px;
-            background: #f5b520;
-            color: #10261a;
-            font-weight: 600;
-            font-size: 15px;
-            text-decoration: none;
-            transition:
-              transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
-              box-shadow 0.3s;
-          }
-          .c-cta:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 18px 34px -14px rgba(245, 181, 32, 0.75);
-          }
-          .c-cta:focus-visible,
-          .c-thumb:focus-visible {
-            outline: 3px solid #f5b520;
-            outline-offset: 3px;
-          }
-          .c-thumbs {
-            grid-column: 3;
-            grid-row: 1;
-            position: relative;
-            z-index: 2;
-            display: grid;
-            gap: 12px;
-          }
-          .c-thumb {
-            display: block;
-            padding: 10px;
-            border-radius: 18px;
-            border: 1px solid rgba(247, 240, 220, 0.2);
-            background: rgba(247, 240, 220, 0.05);
-            cursor: pointer;
-            transition:
-              border-color 0.25s,
-              background-color 0.25s,
-              transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-          }
-          .c-thumb:hover {
-            background: rgba(247, 240, 220, 0.12);
-            transform: translateX(-4px);
-          }
-          .c-thumb[aria-pressed="true"] {
-            border-color: #f5b520;
-            background: rgba(245, 181, 32, 0.12);
-          }
-          .c-thumb img {
-            display: block;
-            width: 100%;
-            height: 84px;
-            object-fit: contain;
-          }
-          @media (max-width: 900px) {
-            .c-panel {
-              grid-template-columns: 1fr;
-              min-height: 0;
-              padding-top: 24px;
-            }
-            .c-info {
-              grid-column: auto;
-              grid-row: auto;
-              max-width: none;
-            }
-            .c-pack {
-              grid-column: auto;
-              grid-row: auto;
-              order: -1;
-              width: 62vw;
-              max-width: 320px;
-              margin: -60px auto 0;
-            }
-            .c-thumbs {
-              grid-column: auto;
-              grid-row: auto;
-              grid-template-columns: repeat(4, 1fr);
-              gap: 10px;
-              margin-top: 28px;
-            }
-            .c-thumb {
-              padding: 6px;
-              border-radius: 14px;
-            }
-            .c-thumb img {
-              height: 64px;
-            }
-            .c-bg img {
-              width: 28vw;
-            }
-          }
-          @media (max-width: 720px) {
-            .c-hero {
-              padding-top: 76px;
-            }
-            .c-word {
-              font-size: 22vw;
-            }
-            .c-actions {
-              flex-direction: column;
-              align-items: stretch;
-            }
-            .c-group {
-              justify-content: center;
-            }
-            .c-tel {
-              text-align: center;
-            }
-            .c-bg img:nth-child(n + 4) {
-              display: none;
-            }
-          }
-          @media (prefers-reduced-motion: reduce) {
-            .c-word .ch,
-            .c-btn,
-            .c-cta,
-            .c-pack img,
-            .c-thumb,
-            .c-bg img {
-              transition: none !important;
-              animation: none !important;
-            }
-          }
-        </style>
-
-        <section class="c-hero" aria-label="Century">
-          <div class="c-top">
-            <div class="c-bg" aria-hidden="true">
-              <img
-                src="assets/images/mk-classic.webp"
-                alt=""
-                style="left: 3%; top: 10%; --t: -9deg"
-              />
-              <img
-                src="assets/images/sc.webp"
-                alt=""
-                style="left: 19%; top: 52%; --t: -4deg"
-              />
-              <img
-                src="assets/images/besan.webp"
-                alt=""
-                style="right: 20%; top: 8%; --t: 4deg"
-              />
-              <img
-                src="assets/images/poha.webp"
-                alt=""
-                style="right: 4%; top: 50%; --t: 9deg"
-              />
-              <img
-                src="assets/images/jaggery-front.webp"
-                alt=""
-                style="
-                  left: 44%;
-                  top: -18%;
-                  --t: -2deg;
-                  width: clamp(110px, 10vw, 150px);
-                "
-              />
-            </div>
-            <h1 class="c-word" aria-label="Century">
-              <span class="ch" style="--d: 0s">C</span
-              ><span class="ch" style="--d: 0.06s">e</span
-              ><span class="ch" style="--d: 0.12s">n</span
-              ><span class="ch" style="--d: 0.18s">t</span
-              ><span class="ch" style="--d: 0.24s">u</span
-              ><span class="ch" style="--d: 0.3s">r</span
-              ><span class="ch" style="--d: 0.36s">y</span>
-            </h1>
-            <div class="c-actions">
-              <div class="c-group">
-                <a class="c-btn primary" href="#products"
-                  >Shop the range
-                  <span class="arr" aria-hidden="true">&rarr;</span></a
-                >
-                <a class="c-btn" href="#services">Order for my business</a>
-              </div>
-              <div class="c-group">
-                <a class="c-btn c-tel" href="tel:18002967999"
-                  >Call 1800 296 7999</a
-                >
-              </div>
-            </div>
-          </div>
-
-          <div class="c-panel">
-            <div class="c-info">
-              <h2 id="cName">Soya Chunks</h2>
-              <p class="c-line" id="cLine">
-                Chunks, Jumbo, Mini and Granules. Plant protein for curries,
-                pulao and keema.
-              </p>
-              <ul class="c-specs" id="cSpecs">
-                <li><b>Protein</b><span>53% pure plant protein</span></li>
-                <li><b>Fat</b><span>99% fat-free</span></li>
-                <li><b>Diet</b><span>100% vegetarian and vegan</span></li>
-                <li>
-                  <b>Sizes</b><span>Mini, Granules, Chunks and Jumbo</span>
-                </li>
-              </ul>
-              <a class="c-cta" id="cGo" href="#product/soya-chunks">Shop now</a>
-            </div>
-            <div class="c-pack">
-              <img
-                id="cImg"
-                src="assets/images/sc.webp"
-                alt="Century Soya Chunks pack"
-                width="430"
-                height="560"
-              />
-            </div>
-            <div class="c-thumbs" role="group" aria-label="Choose a product">
-              <button
-                class="c-thumb"
-                type="button"
-                data-id="soya-chunks"
-                aria-pressed="true"
-                aria-label="Soya Chunks"
-              >
-                <img
-                  src="assets/images/sc.webp"
-                  alt=""
-                  width="150"
-                  height="150"
-                />
-              </button>
-              <button
-                class="c-thumb"
-                type="button"
-                data-id="mk-classic"
-                aria-pressed="false"
-                aria-label="Makhana"
-              >
-                <img
-                  src="assets/images/mk-classic.webp"
-                  alt=""
-                  width="150"
-                  height="150"
-                />
-              </button>
-              <button
-                class="c-thumb"
-                type="button"
-                data-id="besan"
-                aria-pressed="false"
-                aria-label="Besan"
-              >
-                <img
-                  src="assets/images/besan.webp"
-                  alt=""
-                  width="150"
-                  height="150"
-                />
-              </button>
-              <button
-                class="c-thumb"
-                type="button"
-                data-id="jaggery"
-                aria-pressed="false"
-                aria-label="Jaggery Powder"
-              >
-                <img
-                  src="assets/images/jaggery-front.webp"
-                  alt=""
-                  width="150"
-                  height="150"
-                />
-              </button>
-            </div>
-          </div>
-        </section>
-        <script>
-          (function () {
-            var P = {
-              "soya-chunks": {
-                name: "Soya Chunks",
-                img: "assets/images/sc.webp",
-                alt: "Century Soya Chunks pack",
-                line: "Chunks, Jumbo, Mini and Granules. Plant protein for curries, pulao and keema.",
-                specs: [
-                  ["Protein", "53% pure plant protein"],
-                  ["Fat", "99% fat-free"],
-                  ["Diet", "100% vegetarian and vegan"],
-                  ["Sizes", "Mini, Granules, Chunks and Jumbo"],
-                ],
-              },
-              "mk-classic": {
-                name: "Makhana",
-                img: "assets/images/mk-classic.webp",
-                alt: "Century Makhana pack",
-                line: "Fox nuts graded by size for roasting, snacking, kheer and gravies.",
-                specs: [
-                  ["Grades", "Classic Select, Extra Puffed, Mini Prime"],
-                  ["Use", "Snacking, kheer and gravies"],
-                  ["Type", "Fox nuts"],
-                ],
-              },
-              besan: {
-                name: "Besan",
-                img: "assets/images/besan.webp",
-                alt: "Century Besan pack",
-                line: "Fine Besan milled from 100% unpolished chana dal.",
-                specs: [
-                  ["Source", "100% unpolished chana dal"],
-                  ["Texture", "Fine and smooth"],
-                ],
-              },
-              jaggery: {
-                name: "Jaggery Powder",
-                img: "assets/images/jaggery-front.webp",
-                alt: "Century Jaggery Powder sachet",
-                line: "Pure jaggery made only from sugarcane, in 5 g single-serve sachets.",
-                specs: [
-                  ["Source", "Sugarcane only"],
-                  ["Additives", "No chemicals, no added colour"],
-                  ["Pack", "5 g single-serve sachets"],
-                ],
-              },
-            };
-            var img = document.getElementById("cImg"),
-              name = document.getElementById("cName"),
-              line = document.getElementById("cLine"),
-              specs = document.getElementById("cSpecs"),
-              go = document.getElementById("cGo"),
-              btns = document.querySelectorAll(".c-thumb");
-            function show(id) {
-              var d = P[id];
-              if (!d) return;
-              img.style.opacity = 0;
-              setTimeout(function () {
-                img.src = d.img;
-                img.alt = d.alt;
-                img.style.opacity = 1;
-              }, 180);
-              name.textContent = d.name;
-              line.textContent = d.line;
-              specs.innerHTML = d.specs
-                .map(function (s) {
-                  return (
-                    "<li><b>" + s[0] + "</b><span>" + s[1] + "</span></li>"
-                  );
-                })
-                .join("");
-              go.href = "#product/" + id;
-              btns.forEach(function (b) {
-                b.setAttribute(
-                  "aria-pressed",
-                  b.getAttribute("data-id") === id ? "true" : "false",
-                );
-              });
-            }
-            btns.forEach(function (b) {
-              b.addEventListener("click", function () {
-                show(b.getAttribute("data-id"));
-              });
-            });
-          })();
-        </script>
-
-        <section class="hero" hidden>
-          <div class="orbit-hero" id="orbitHero" tabindex="-1">
-            <div class="oh-wrap">
-              <div class="oh-copy">
-                <h1>Good food, <em>honestly</em> made.</h1>
-                <p class="oh-cat-row">
-                  <strong class="oh-cat">Soya Chunks</strong>
-                </p>
-                <p class="oh-line">53% pure plant protein, 99% fat-free.</p>
-                <p class="oh-lede">
-                  Soya, Makhana, Pulses, Besan, Poha, Jaggery and single-serve
-                  sachets from our own Quality Certified Manufacturing Units. A
-                  family food business since 1958, and the Century brand since
-                  1980.
-                </p>
-                <p class="cert">
-                  <span class="cert-btn cert-static"
-                    ><span class="cert-dot" aria-hidden="true"></span>FSSC 22000
-                    certified</span
-                  >
-                </p>
-                <div class="oh-actions">
-                  <a class="btn btn-y" href="#products">Explore products</a>
-                  <a class="btn btn-o" href="#services"
-                    >Supply for your business</a
-                  >
-                </div>
-              </div>
-              <div class="oh-dial" id="ohDial">
-                <div class="oh-ring" aria-hidden="true"></div>
-                <div class="oh-core" aria-hidden="true">
-                  <span class="oh-num">01</span><small>of 05</small>
-                </div>
-                <a
-                  class="oh-pack"
-                  href="#product/soya-chunks"
-                  data-title="Soya Chunks"
-                  data-line="53% pure plant protein, 99% fat-free soya."
-                  data-bg="#136C37"
-                >
-                  <img
-                    src="assets/images/sc.webp"
-                    alt="Century Soya Chunks pack"
-                    width="200"
-                    height="260"
-                  />
-                </a>
-                <a
-                  class="oh-pack"
-                  href="#product/mk-classic"
-                  data-title="Makhana"
-                  data-line="Classic Select, Extra Puffed and Mini Prime, graded by size."
-                  data-bg="#0C4D27"
-                >
-                  <img
-                    src="assets/images/mk-classic.webp"
-                    alt="Century Makhana pack"
-                    width="200"
-                    height="260"
-                  />
-                </a>
-                <a
-                  class="oh-pack"
-                  href="#product/besan"
-                  data-title="Besan"
-                  data-line="Gram flour for everyday cooking."
-                  data-bg="#6B4A12"
-                >
-                  <img
-                    src="assets/images/besan.webp"
-                    alt="Century Besan pack"
-                    width="200"
-                    height="260"
-                  />
-                </a>
-                <a
-                  class="oh-pack"
-                  href="#product/poha"
-                  data-title="Poha"
-                  data-line="Flattened rice for quick breakfasts."
-                  data-bg="#5A2B16"
-                >
-                  <img
-                    src="assets/images/poha.webp"
-                    alt="Century Poha pack"
-                    width="200"
-                    height="260"
-                  />
-                </a>
-                <a
-                  class="oh-pack"
-                  href="#product/jaggery"
-                  data-title="Jaggery"
-                  data-line="Pure jaggery in 5 g sachets, made from sugarcane."
-                  data-bg="#3B2A12"
-                >
-                  <img
-                    src="assets/images/jaggery-front.webp"
-                    alt="Century Jaggery sachet"
-                    width="200"
-                    height="260"
-                  />
-                </a>
-              </div>
-            </div>
-            <div
-              class="oh-tabs"
-              role="tablist"
-              aria-label="Choose a product line"
-            >
-              <button
-                class="oh-tab"
-                role="tab"
-                type="button"
-                aria-selected="true"
-              >
-                <small>01</small>Soya<i class="oh-fill" aria-hidden="true"></i>
-              </button>
-              <button
-                class="oh-tab"
-                role="tab"
-                type="button"
-                aria-selected="false"
-                tabindex="-1"
-              >
-                <small>02</small>Makhana<i
-                  class="oh-fill"
-                  aria-hidden="true"
-                ></i>
-              </button>
-              <button
-                class="oh-tab"
-                role="tab"
-                type="button"
-                aria-selected="false"
-                tabindex="-1"
-              >
-                <small>03</small>Besan<i class="oh-fill" aria-hidden="true"></i>
-              </button>
-              <button
-                class="oh-tab"
-                role="tab"
-                type="button"
-                aria-selected="false"
-                tabindex="-1"
-              >
-                <small>04</small>Poha<i class="oh-fill" aria-hidden="true"></i>
-              </button>
-              <button
-                class="oh-tab"
-                role="tab"
-                type="button"
-                aria-selected="false"
-                tabindex="-1"
-              >
-                <small>05</small>Jaggery<i
-                  class="oh-fill"
-                  aria-hidden="true"
-                ></i>
-              </button>
-            </div>
-          </div>
-          <div class="legacy-hero" hidden>
+        <section class="hero">
+          <div class="legacy-hero">
             <canvas id="seeds" aria-hidden="true"></canvas>
-            <div class="slider" id="heroSlider" data-auto="6000">
+            <div class="slider" id="heroSlider" data-auto="3500">
               <div class="slides">
                 <div class="slide active" data-bg="#136C37">
                   <div class="wrap hero-grid">
@@ -1760,36 +1024,6 @@
                 <div class="s-dots"></div>
                 <button class="s-arr next" aria-label="Next slide"></button>
               </div>
-            </div>
-            <div class="hero-why" aria-label="Why Century">
-              <a class="why-item" href="#about">
-                <strong>Since 1980</strong>
-                <span
-                  >The Century brand. Our family business, Dinero FoodWorks, has
-                  been in food since 1958.</span
-                >
-              </a>
-              <a class="why-item" href="#services">
-                <strong>FSSC 22000</strong>
-                <span
-                  >Food safety certified manufacturing, in our own Punjab
-                  units.</span
-                >
-              </a>
-              <a class="why-item" href="#products">
-                <strong>Made by us</strong>
-                <span
-                  >We process and pack our own range, so quality is checked at
-                  every step.</span
-                >
-              </a>
-              <a class="why-item" href="#products">
-                <strong>Pure ingredients</strong>
-                <span
-                  >Soya chunks with 53% pure plant protein, and unpolished
-                  pulses.</span
-                >
-              </a>
             </div>
           </div>
           <div
@@ -3543,10 +2777,9 @@
         }
       }
     </style>
-    <script src="assets/js/hero.js?v=20261130"></script>
-    <script src="assets/js/main.js?v=20261130"></script>
+    <script src="assets/js/main.js?v=20261204"></script>
     <script src="assets/js/vendor/motion.min.js?v=20261125"></script>
-    <script src="assets/js/brand.js?v=20261125"></script>
+    <script src="assets/js/brand.js?v=20261204"></script>
     <script src="assets/js/glass.js?v=20261125"></script>
     <script src="assets/js/fx.js?v=20261125"></script>
     <script>
