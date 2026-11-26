@@ -249,7 +249,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="assets/vendor/bootstrap-grid.min.css" />
@@ -347,6 +347,80 @@
         }
       }
     </style>
+    <style id="century-cert-serif">
+      h1,
+      h2 {
+        font-family: "Fraunces", Georgia, serif !important;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+      }
+      .cert {
+        position: relative;
+        display: inline-block;
+        margin: 0 0 18px;
+      }
+      .cert-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 14px;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.35);
+        background: rgba(255, 255, 255, 0.12);
+        color: #fff;
+        font:
+          600 13px/1 Poppins,
+          system-ui,
+          sans-serif;
+        cursor: pointer;
+      }
+      .cert-btn:focus-visible {
+        outline: 3px solid #f5b520;
+        outline-offset: 3px;
+      }
+      .cert-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #f5b520;
+      }
+      .cert-pop {
+        position: absolute;
+        left: 0;
+        top: calc(100% + 12px);
+        width: min(360px, 80vw);
+        margin: 0;
+        padding: 8px;
+        background: #fffdf6;
+        border-radius: 16px;
+        box-shadow: 0 24px 50px rgba(0, 0, 0, 0.25);
+        opacity: 0;
+        transform: translateY(6px);
+        pointer-events: none;
+        transition:
+          opacity 0.25s ease,
+          transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+        z-index: 20;
+      }
+      .cert:hover .cert-pop,
+      .cert:focus-within .cert-pop,
+      .cert.open .cert-pop {
+        opacity: 1;
+        transform: none;
+        pointer-events: auto;
+      }
+      .cert-pop img {
+        display: block;
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .cert-pop {
+          transition: none;
+        }
+      }
+    </style>
   </head>
   <body>
     <div id="loader" aria-hidden="true">
@@ -437,6 +511,26 @@
                       Manufacturing Units. A family food business since 1958,
                       and the Century brand since 1980.
                     </p>
+                    <div class="cert" id="certBadge">
+                      <button
+                        class="cert-btn"
+                        type="button"
+                        aria-expanded="false"
+                        aria-controls="certPop"
+                      >
+                        <span class="cert-dot" aria-hidden="true"></span>FSSC
+                        22000 certified
+                      </button>
+                      <figure class="cert-pop" id="certPop" role="tooltip">
+                        <img
+                          src="assets/images/fssc-22000.jpg"
+                          alt="FSSC 22000 food safety certificate for Dinero FoodWorks"
+                          width="830"
+                          height="400"
+                          loading="lazy"
+                        />
+                      </figure>
+                    </div>
                     <div class="hero-ctas a" style="--dl: 0.9s">
                       <a class="btn btn-y" href="#products">Explore products</a
                       ><a class="btn btn-o" href="#services"
