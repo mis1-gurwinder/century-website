@@ -753,7 +753,7 @@
     <main>
       <!-- HOME -->
       <div class="view" id="v-home">
-        <!-- CENTURY HERO v3: cream headline card, dark product panel, pack overlapping both -->
+        <!-- CENTURY HERO v4: cream wordmark card with product images behind, buttons, dark product panel -->
         <style id="c-hero-css">
           .c-hero {
             position: relative;
@@ -768,16 +768,39 @@
           }
           .c-top {
             position: relative;
+            overflow: hidden;
             z-index: 1;
             max-width: 1320px;
             margin: 0 auto;
             padding: clamp(28px, 4vw, 56px) clamp(20px, 3.5vw, 48px)
-              clamp(26px, 3.2vw, 44px);
+              clamp(24px, 3vw, 40px);
             background: #f7f0dc;
             color: #0c2c19;
             border-radius: 28px;
           }
+          .c-bg {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+          }
+          .c-bg img {
+            position: absolute;
+            width: clamp(120px, 12vw, 172px);
+            height: auto;
+            opacity: 0.24;
+            filter: saturate(0.7);
+            transform: rotate(var(--t, 0deg));
+            transition:
+              opacity 0.6s ease,
+              transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+          }
+          .c-top:hover .c-bg img {
+            opacity: 0.34;
+          }
           .c-word {
+            position: relative;
+            z-index: 1;
             margin: 0;
             text-align: center;
             font-weight: 900;
@@ -787,9 +810,18 @@
             white-space: nowrap;
             color: #0c2c19;
           }
-          .c-word span {
-            display: block;
-            animation: cWordUp 1.2s cubic-bezier(0.22, 1, 0.36, 1) both;
+          .c-word .ch {
+            display: inline-block;
+            animation: cWordUp 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+            animation-delay: var(--d, 0s);
+            transition:
+              color 0.3s,
+              transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+            cursor: default;
+          }
+          .c-word .ch:hover {
+            color: #136c37;
+            transform: translateY(-0.07em);
           }
           @keyframes cWordUp {
             from {
@@ -801,39 +833,94 @@
               transform: none;
             }
           }
-          .c-meta {
+          .c-actions {
+            position: relative;
+            z-index: 2;
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
-            gap: 24px;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px 16px;
             margin-top: clamp(18px, 2.6vw, 36px);
+          }
+          .c-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+          }
+          .c-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            min-height: 48px;
+            padding: 0 22px;
+            border-radius: 999px;
+            border: 1.5px solid #0c2c19;
+            background: transparent;
+            color: #0c2c19;
             font:
-              500 15px/1.6 Poppins,
+              600 15px/1 Poppins,
               system-ui,
               sans-serif;
-            color: #33402f;
+            text-decoration: none;
+            cursor: pointer;
+            transition:
+              background-color 0.25s,
+              color 0.25s,
+              transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.3s;
           }
-          .c-meta p {
-            margin: 0;
-            max-width: 28em;
+          .c-btn:hover {
+            background: #0c2c19;
+            color: #f7f0dc;
+            transform: translateY(-2px);
+            box-shadow: 0 14px 26px -14px rgba(12, 44, 25, 0.6);
           }
-          .c-meta p:last-child {
-            text-align: right;
+          .c-btn.primary {
+            background: #0c2c19;
+            color: #f7f0dc;
+          }
+          .c-btn.primary:hover {
+            background: #136c37;
+          }
+          .c-btn .arr {
+            display: inline-block;
+            transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+          }
+          .c-btn:hover .arr {
+            transform: translateX(4px);
+          }
+          .c-btn:focus-visible {
+            outline: 3px solid #f5b520;
+            outline-offset: 3px;
+          }
+          .c-tel {
+            font-weight: 700;
+            font-size: 16px;
           }
           .c-panel {
             position: relative;
             max-width: 1320px;
             margin: 16px auto 0;
+            min-height: 540px;
             display: grid;
             grid-template-columns: minmax(0, 1fr) minmax(0, 360px) 120px;
             align-items: start;
             gap: 32px;
-            padding: clamp(28px, 3.5vw, 48px) clamp(20px, 3.5vw, 48px)
-              clamp(28px, 3.5vw, 48px);
+            padding: clamp(28px, 3.5vw, 48px) clamp(20px, 3.5vw, 48px);
             background: #0a2415;
             border-radius: 28px;
           }
+          .c-info {
+            grid-column: 1;
+            grid-row: 1;
+            position: relative;
+            z-index: 2;
+            max-width: 340px;
+          }
           .c-pack {
+            grid-column: 2;
+            grid-row: 1;
             position: relative;
             z-index: 3;
             justify-self: center;
@@ -847,12 +934,6 @@
             height: auto;
             filter: drop-shadow(0 34px 34px rgba(0, 0, 0, 0.5));
             transition: opacity 0.35s ease;
-          }
-          .c-info {
-            position: relative;
-            z-index: 2;
-            max-width: 340px;
-            padding-top: 0;
           }
           .c-info h2 {
             margin: 0 0 14px;
@@ -926,9 +1007,10 @@
             outline-offset: 3px;
           }
           .c-thumbs {
+            grid-column: 3;
+            grid-row: 1;
             position: relative;
             z-index: 2;
-            align-self: start;
             display: grid;
             gap: 12px;
           }
@@ -941,10 +1023,12 @@
             cursor: pointer;
             transition:
               border-color 0.25s,
-              background-color 0.25s;
+              background-color 0.25s,
+              transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
           }
           .c-thumb:hover {
             background: rgba(247, 240, 220, 0.12);
+            transform: translateX(-4px);
           }
           .c-thumb[aria-pressed="true"] {
             border-color: #f5b520;
@@ -959,18 +1043,25 @@
           @media (max-width: 900px) {
             .c-panel {
               grid-template-columns: 1fr;
+              min-height: 0;
               padding-top: 24px;
             }
+            .c-info {
+              grid-column: auto;
+              grid-row: auto;
+              max-width: none;
+            }
             .c-pack {
+              grid-column: auto;
+              grid-row: auto;
               order: -1;
               width: 62vw;
               max-width: 320px;
               margin: -60px auto 0;
             }
-            .c-info {
-              max-width: none;
-            }
             .c-thumbs {
+              grid-column: auto;
+              grid-row: auto;
               grid-template-columns: repeat(4, 1fr);
               gap: 10px;
               margin-top: 28px;
@@ -982,6 +1073,9 @@
             .c-thumb img {
               height: 64px;
             }
+            .c-bg img {
+              width: 28vw;
+            }
           }
           @media (max-width: 720px) {
             .c-hero {
@@ -990,23 +1084,27 @@
             .c-word {
               font-size: 22vw;
             }
-            .c-meta {
+            .c-actions {
               flex-direction: column;
-              gap: 12px;
-              font-size: 14px;
+              align-items: stretch;
             }
-            .c-meta p:last-child {
-              text-align: left;
+            .c-group {
+              justify-content: center;
             }
-            .c-panel {
-              margin-top: 12px;
+            .c-tel {
+              text-align: center;
+            }
+            .c-bg img:nth-child(n + 4) {
+              display: none;
             }
           }
           @media (prefers-reduced-motion: reduce) {
-            .c-word span,
+            .c-word .ch,
+            .c-btn,
             .c-cta,
             .c-pack img,
-            .c-thumb {
+            .c-thumb,
+            .c-bg img {
               transition: none !important;
               animation: none !important;
             }
@@ -1015,29 +1113,64 @@
 
         <section class="c-hero" aria-label="Century">
           <div class="c-top">
-            <h1 class="c-word" aria-label="Century"><span>Century</span></h1>
-            <div class="c-meta">
-              <p>
-                Food brand from Punjab, since 1980. Soya chunks, makhana, dal,
-                besan, poha and jaggery, made in our own plants.
-              </p>
-              <p>
-                FSSC 22000 certified. Shop for your kitchen, or order in bulk
-                for your business.
-              </p>
+            <div class="c-bg" aria-hidden="true">
+              <img
+                src="assets/images/mk-classic.webp"
+                alt=""
+                style="left: 3%; top: 10%; --t: -9deg"
+              />
+              <img
+                src="assets/images/sc.webp"
+                alt=""
+                style="left: 19%; top: 52%; --t: -4deg"
+              />
+              <img
+                src="assets/images/besan.webp"
+                alt=""
+                style="right: 20%; top: 8%; --t: 4deg"
+              />
+              <img
+                src="assets/images/poha.webp"
+                alt=""
+                style="right: 4%; top: 50%; --t: 9deg"
+              />
+              <img
+                src="assets/images/jaggery-front.webp"
+                alt=""
+                style="
+                  left: 44%;
+                  top: -18%;
+                  --t: -2deg;
+                  width: clamp(110px, 10vw, 150px);
+                "
+              />
+            </div>
+            <h1 class="c-word" aria-label="Century">
+              <span class="ch" style="--d: 0s">C</span
+              ><span class="ch" style="--d: 0.06s">e</span
+              ><span class="ch" style="--d: 0.12s">n</span
+              ><span class="ch" style="--d: 0.18s">t</span
+              ><span class="ch" style="--d: 0.24s">u</span
+              ><span class="ch" style="--d: 0.3s">r</span
+              ><span class="ch" style="--d: 0.36s">y</span>
+            </h1>
+            <div class="c-actions">
+              <div class="c-group">
+                <a class="c-btn primary" href="#products"
+                  >Shop the range
+                  <span class="arr" aria-hidden="true">&rarr;</span></a
+                >
+                <a class="c-btn" href="#services">Order for my business</a>
+              </div>
+              <div class="c-group">
+                <a class="c-btn c-tel" href="tel:18002967999"
+                  >Call 1800 296 7999</a
+                >
+              </div>
             </div>
           </div>
 
           <div class="c-panel">
-            <div class="c-pack">
-              <img
-                id="cImg"
-                src="assets/images/sc.webp"
-                alt="Century Soya Chunks pack"
-                width="430"
-                height="560"
-              />
-            </div>
             <div class="c-info">
               <h2 id="cName">Soya Chunks</h2>
               <p class="c-line" id="cLine">
@@ -1053,6 +1186,15 @@
                 </li>
               </ul>
               <a class="c-cta" id="cGo" href="#product/soya-chunks">Shop now</a>
+            </div>
+            <div class="c-pack">
+              <img
+                id="cImg"
+                src="assets/images/sc.webp"
+                alt="Century Soya Chunks pack"
+                width="430"
+                height="560"
+              />
             </div>
             <div class="c-thumbs" role="group" aria-label="Choose a product">
               <button
