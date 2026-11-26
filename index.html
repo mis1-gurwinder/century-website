@@ -452,6 +452,240 @@
           transform: none;
         }
       }
+      .legacy-hero[hidden] {
+        display: none !important;
+      }
+      /* Orbit hero */
+      .orbit-hero {
+        position: relative;
+        z-index: 1;
+        background: var(--ob, #136c37);
+        transition: background-color 1s ease;
+        color: #fff;
+        overflow: hidden;
+        padding: 28px 16px 36px;
+        min-height: 100vh;
+      }
+      .orbit-hero:focus {
+        outline: none;
+      }
+      .oh-wrap {
+        max-width: 1180px;
+        margin: 0 auto;
+        display: grid;
+        gap: 28px;
+        align-items: center;
+      }
+      @media (min-width: 900px) {
+        .oh-wrap {
+          grid-template-columns: 1fr 1fr;
+          gap: 56px;
+        }
+      }
+      .oh-copy {
+        display: grid;
+        gap: 14px;
+        justify-items: start;
+        min-width: 0;
+      }
+      .orbit-hero h1 {
+        margin: 0;
+        font-size: clamp(2.6rem, 1.6rem + 4vw, 4.6rem);
+        line-height: 1;
+        font-weight: 900;
+        letter-spacing: -0.035em;
+      }
+      .orbit-hero h1 em {
+        font-style: italic;
+        font-weight: 300;
+        color: #f5b520;
+      }
+      .oh-cat-row {
+        margin: 8px 0 0;
+      }
+      .oh-cat {
+        font-family: "Fraunces", Georgia, serif;
+        font-weight: 600;
+        font-size: 1.35rem;
+        color: #f5b520;
+      }
+      .oh-line {
+        margin: 0;
+        font-size: 1.05rem;
+        color: rgba(255, 255, 255, 0.9);
+      }
+      .oh-lede {
+        margin: 6px 0 0;
+        max-width: 34em;
+        font-size: 0.98rem;
+        line-height: 1.6;
+        color: rgba(255, 255, 255, 0.85);
+      }
+      .oh-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 6px;
+      }
+      .oh-dial {
+        position: relative;
+        width: min(100%, 520px);
+        aspect-ratio: 1;
+        margin: 0 auto;
+      }
+      .oh-ring {
+        position: absolute;
+        inset: 6%;
+        border-radius: 50%;
+        border: 1px dashed rgba(255, 255, 255, 0.28);
+      }
+      .oh-core {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 38%;
+        aspect-ratio: 1;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        display: grid;
+        place-content: center;
+        text-align: center;
+        background: radial-gradient(
+          circle at 35% 30%,
+          rgba(255, 255, 255, 0.24),
+          rgba(255, 255, 255, 0.04)
+        );
+        z-index: 0;
+      }
+      .oh-num {
+        font-family: "Fraunces", Georgia, serif;
+        font-weight: 600;
+        font-size: clamp(2.4rem, 4vw, 3.4rem);
+        line-height: 1;
+        color: #fff;
+      }
+      .oh-core small {
+        font-size: 0.8rem;
+        letter-spacing: 0.08em;
+        color: rgba(255, 255, 255, 0.75);
+      }
+      .oh-pack {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 36%;
+        display: block;
+        will-change: transform, opacity;
+        transition:
+          transform 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+          opacity 0.9s ease;
+        cursor: pointer;
+      }
+      .oh-pack img {
+        display: block;
+        width: 100%;
+        height: auto;
+        filter: drop-shadow(0 22px 26px rgba(0, 0, 0, 0.38));
+        transition: transform 0.4s ease;
+      }
+      .oh-pack.is-active:hover img {
+        transform: scale(1.04) rotate(-1deg);
+      }
+      .oh-pack:focus-visible {
+        outline: 3px solid #f5b520;
+        outline-offset: 6px;
+        border-radius: 12px;
+      }
+      .oh-tabs {
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 10px;
+        max-width: 1180px;
+        margin: 28px auto 0;
+      }
+      .oh-tab {
+        position: relative;
+        min-width: 0;
+        text-align: left;
+        padding: 12px 0 0;
+        background: transparent;
+        border: 0;
+        color: rgba(255, 255, 255, 0.7);
+        font:
+          500 0.9rem/1.2 Poppins,
+          system-ui,
+          sans-serif;
+        cursor: pointer;
+      }
+      .oh-tab small {
+        display: block;
+        font-family: "Fraunces", Georgia, serif;
+        font-size: 0.8rem;
+        color: #f5b520;
+      }
+      .oh-tab[aria-selected="true"] {
+        color: #fff;
+      }
+      .oh-tab:focus-visible {
+        outline: 3px solid #f5b520;
+        outline-offset: 4px;
+        border-radius: 6px;
+      }
+      .oh-fill {
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 3px;
+        width: 0;
+        background: #f5b520;
+        border-radius: 3px;
+      }
+      .oh-tab::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        height: 3px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 3px;
+      }
+      .oh-tab:not([aria-selected="true"]) .oh-fill {
+        width: 0;
+        animation: none;
+      }
+      .oh-tab[aria-selected="true"] .oh-fill {
+        animation: ohFill 4.8s linear forwards;
+      }
+      section.hero {
+        background-color: transparent !important;
+      }
+      @keyframes ohFill {
+        from {
+          width: 0;
+        }
+        to {
+          width: 100%;
+        }
+      }
+      @media (max-width: 640px) {
+        .oh-tab small {
+          font-size: 0.72rem;
+        }
+        .oh-tab {
+          font-size: 0.8rem;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .oh-pack,
+        .orbit-hero,
+        .oh-pack img {
+          transition: none;
+        }
+        .oh-fill {
+          animation: none !important;
+        }
+      }
     </style>
   </head>
   <body>
@@ -521,280 +755,452 @@
       <!-- HOME -->
       <div class="view" id="v-home">
         <section class="hero">
-          <canvas id="seeds" aria-hidden="true"></canvas>
-          <div class="slider" id="heroSlider" data-auto="6000">
-            <div class="slides">
-              <div class="slide active" data-bg="#136C37">
-                <div class="wrap hero-grid">
-                  <div class="hero-copy">
-                    <h1>
-                      <span class="w" style="animation-delay: 0.3s">Good</span>
-                      <span class="w" style="animation-delay: 0.42s">food,</span
-                      ><br /><span class="bar w" style="animation-delay: 0.54s"
-                        >honestly</span
-                      >
-                      <span class="w" style="animation-delay: 0.66s"
-                        >made.</span
-                      >
-                    </h1>
-                    <p class="lede a" style="--dl: 0.75s">
-                      Soya, Makhana, Pulses, Besan, Poha, Jaggery and
-                      single-serve sachets from our own Quality Certified
-                      Manufacturing Units. A family food business since 1958,
-                      and the Century brand since 1980.
-                    </p>
-                    <p class="cert">
-                      <span class="cert-btn cert-static"
-                        ><span class="cert-dot" aria-hidden="true"></span>FSSC
-                        22000 certified</span
-                      >
-                    </p>
-                    <div class="hero-ctas a" style="--dl: 0.9s">
-                      <a class="btn btn-y" href="#products">Explore products</a
-                      ><a class="btn btn-o" href="#services"
-                        >Supply for your business</a
-                      >
-                    </div>
-                  </div>
-                  <div class="stage" id="stage">
-                    <div
-                      class="seal"
-                      data-seal="Pure home food • Since 1980 • "
-                      data-core="Since<br>1980"
-                    ></div>
-                    <div class="packs" id="packs"></div>
-                  </div>
+          <div class="orbit-hero" id="orbitHero" tabindex="-1">
+            <div class="oh-wrap">
+              <div class="oh-copy">
+                <h1>Good food, <em>honestly</em> made.</h1>
+                <p class="oh-cat-row">
+                  <strong class="oh-cat">Soya Chunks</strong>
+                </p>
+                <p class="oh-line">53% pure plant protein, 99% fat-free.</p>
+                <p class="oh-lede">
+                  Soya, Makhana, Pulses, Besan, Poha, Jaggery and single-serve
+                  sachets from our own Quality Certified Manufacturing Units. A
+                  family food business since 1958, and the Century brand since
+                  1980.
+                </p>
+                <p class="cert">
+                  <span class="cert-btn cert-static"
+                    ><span class="cert-dot" aria-hidden="true"></span>FSSC 22000
+                    certified</span
+                  >
+                </p>
+                <div class="oh-actions">
+                  <a class="btn btn-y" href="#products">Explore products</a>
+                  <a class="btn btn-o" href="#services"
+                    >Supply for your business</a
+                  >
                 </div>
               </div>
-              <div class="slide" data-bg="#0C4D27">
-                <div class="wrap hero-grid">
-                  <div class="hero-copy">
-                    <h2 class="hh a" style="--dl: 0.15s">
-                      53% of Pure Plant Protein.
-                    </h2>
-                    <p class="lede a" style="--dl: 0.35s">
-                      Century Soya Chunks, Jumbo, Mini and Granules. 99%
-                      fat-free, vegan and super soft.
-                    </p>
-                    <div class="hero-ctas a" style="--dl: 0.5s">
-                      <a class="btn btn-y" href="#products/soya" data-grid
-                        >See the Soya range</a
-                      >
-                    </div>
-                  </div>
-                  <div class="sv">
-                    <img
-                      decoding="async"
-                      data-k="sc"
-                      alt=""
-                      style="
-                        left: 4%;
-                        height: 78%;
-                        --t: rotate(-9deg);
-                        --dl: 0.35s;
-                      "
-                    /><img
-                      decoding="async"
-                      data-k="scj"
-                      alt=""
-                      style="
-                        left: 26%;
-                        height: 84%;
-                        --t: rotate(-3deg);
-                        --dl: 0.47s;
-                      "
-                    /><img
-                      decoding="async"
-                      data-k="sg"
-                      alt=""
-                      style="
-                        left: 48%;
-                        height: 80%;
-                        --t: rotate(4deg);
-                        --dl: 0.59s;
-                      "
-                    /><img
-                      decoding="async"
-                      data-k="scm"
-                      alt=""
-                      style="
-                        left: 68%;
-                        height: 74%;
-                        --t: rotate(10deg);
-                        --dl: 0.71s;
-                      "
-                    />
-                  </div>
+              <div class="oh-dial" id="ohDial">
+                <div class="oh-ring" aria-hidden="true"></div>
+                <div class="oh-core" aria-hidden="true">
+                  <span class="oh-num">01</span><small>of 05</small>
                 </div>
-              </div>
-              <div class="slide" data-bg="#136C37">
-                <div class="wrap hero-grid">
-                  <div class="hero-copy">
-                    <h2 class="hh a" style="--dl: 0.15s">
-                      Makhana, graded by size.
-                    </h2>
-                    <p class="lede a" style="--dl: 0.35s">
-                      Classic Select for everyday, Extra Puffed for bold
-                      snacking, Mini Prime for kheer and gravies.
-                    </p>
-                    <div class="hero-ctas a" style="--dl: 0.5s">
-                      <a class="btn btn-y" href="#products/makhana" data-grid
-                        >See the Makhana range</a
-                      >
-                    </div>
-                  </div>
-                  <div class="sv">
-                    <img
-                      decoding="async"
-                      data-k="mk-classic"
-                      alt=""
-                      style="
-                        left: 2%;
-                        height: 80%;
-                        --t: rotate(-7deg);
-                        --dl: 0.35s;
-                      "
-                    /><img
-                      decoding="async"
-                      data-k="mk-puffed"
-                      alt=""
-                      style="
-                        left: 30%;
-                        height: 80%;
-                        --t: rotate(0deg);
-                        --dl: 0.47s;
-                      "
-                    /><img
-                      decoding="async"
-                      data-k="mk-mini"
-                      alt=""
-                      style="
-                        left: 58%;
-                        height: 80%;
-                        --t: rotate(7deg);
-                        --dl: 0.59s;
-                      "
-                    />
-                  </div>
-                </div>
-              </div>
-              <div class="slide" data-bg="#2a1a12">
-                <div class="wrap hero-grid">
-                  <div class="hero-copy">
-                    <h2 class="hh a" style="--dl: 0.15s">
-                      Jaggery Powder sachets.
-                    </h2>
-                    <p class="lede a" style="--dl: 0.35s">
-                      Pure jaggery in 5 g single-serve sachets, made only from
-                      sugarcane with no chemicals or added colour. It dissolves
-                      instantly in Tea, Coffee and Smoothies.
-                    </p>
-                    <div class="hero-ctas a" style="--dl: 0.5s">
-                      <a class="btn btn-y" href="#services"
-                        >How sachet supply works</a
-                      ><a class="btn btn-o" href="#product/jaggery"
-                        >View Jaggery sachet</a
-                      >
-                    </div>
-                  </div>
-                  <div class="sv sq">
-                    <img
-                      decoding="async"
-                      data-k="jaggery"
-                      alt=""
-                      style="
-                        left: 4%;
-                        width: 90%;
-                        bottom: 16%;
-                        --t: rotate(-3deg);
-                        --dl: 0.35s;
-                      "
-                    />
-                  </div>
-                </div>
-              </div>
-              <div class="slide" data-bg="#4a1712">
-                <div class="wrap hero-grid">
-                  <div class="hero-copy">
-                    <h2 class="hh a" style="--dl: 0.15s">
-                      Chilli Flakes &amp; Oregano.
-                    </h2>
-                    <p class="lede a" style="--dl: 0.35s">
-                      100% red Chilli Flakes and an Italian-style Oregano blend
-                      in 0.80 g sachets, for pizza, pasta, garlic bread and
-                      more.
-                    </p>
-                    <div class="hero-ctas a" style="--dl: 0.5s">
-                      <a class="btn btn-y" href="#services"
-                        >How sachet supply works</a
-                      ><a class="btn btn-o" href="#products/seasoning" data-grid
-                        >View seasoning sachets</a
-                      >
-                    </div>
-                  </div>
-                  <div class="sv sq">
-                    <img
-                      decoding="async"
-                      data-k="chilli"
-                      alt=""
-                      style="
-                        left: 0%;
-                        width: 56%;
-                        bottom: 36%;
-                        --t: rotate(-5deg);
-                        --dl: 0.35s;
-                      "
-                    /><img
-                      decoding="async"
-                      data-k="oregano"
-                      alt=""
-                      style="
-                        left: 44%;
-                        width: 54%;
-                        bottom: 6%;
-                        --t: rotate(4deg);
-                        --dl: 0.5s;
-                      "
-                    />
-                  </div>
-                </div>
+                <a
+                  class="oh-pack"
+                  href="#product/soya-chunks"
+                  data-title="Soya Chunks"
+                  data-line="53% pure plant protein, 99% fat-free soya."
+                  data-bg="#136C37"
+                >
+                  <img
+                    src="assets/images/sc.webp"
+                    alt="Century Soya Chunks pack"
+                    width="200"
+                    height="260"
+                  />
+                </a>
+                <a
+                  class="oh-pack"
+                  href="#product/mk-classic"
+                  data-title="Makhana"
+                  data-line="Classic Select, Extra Puffed and Mini Prime, graded by size."
+                  data-bg="#0C4D27"
+                >
+                  <img
+                    src="assets/images/mk-classic.webp"
+                    alt="Century Makhana pack"
+                    width="200"
+                    height="260"
+                  />
+                </a>
+                <a
+                  class="oh-pack"
+                  href="#product/besan"
+                  data-title="Besan"
+                  data-line="Gram flour for everyday cooking."
+                  data-bg="#6B4A12"
+                >
+                  <img
+                    src="assets/images/besan.webp"
+                    alt="Century Besan pack"
+                    width="200"
+                    height="260"
+                  />
+                </a>
+                <a
+                  class="oh-pack"
+                  href="#product/poha"
+                  data-title="Poha"
+                  data-line="Flattened rice for quick breakfasts."
+                  data-bg="#5A2B16"
+                >
+                  <img
+                    src="assets/images/poha.webp"
+                    alt="Century Poha pack"
+                    width="200"
+                    height="260"
+                  />
+                </a>
+                <a
+                  class="oh-pack"
+                  href="#product/jaggery"
+                  data-title="Jaggery"
+                  data-line="Pure jaggery in 5 g sachets, made from sugarcane."
+                  data-bg="#3B2A12"
+                >
+                  <img
+                    src="assets/images/jaggery-front.webp"
+                    alt="Century Jaggery sachet"
+                    width="200"
+                    height="260"
+                  />
+                </a>
               </div>
             </div>
-            <div class="s-ui wrap">
-              <button class="s-arr prev" aria-label="Previous slide"></button>
-              <div class="s-dots"></div>
-              <button class="s-arr next" aria-label="Next slide"></button>
+            <div
+              class="oh-tabs"
+              role="tablist"
+              aria-label="Choose a product line"
+            >
+              <button
+                class="oh-tab"
+                role="tab"
+                type="button"
+                aria-selected="true"
+              >
+                <small>01</small>Soya<i class="oh-fill" aria-hidden="true"></i>
+              </button>
+              <button
+                class="oh-tab"
+                role="tab"
+                type="button"
+                aria-selected="false"
+                tabindex="-1"
+              >
+                <small>02</small>Makhana<i
+                  class="oh-fill"
+                  aria-hidden="true"
+                ></i>
+              </button>
+              <button
+                class="oh-tab"
+                role="tab"
+                type="button"
+                aria-selected="false"
+                tabindex="-1"
+              >
+                <small>03</small>Besan<i class="oh-fill" aria-hidden="true"></i>
+              </button>
+              <button
+                class="oh-tab"
+                role="tab"
+                type="button"
+                aria-selected="false"
+                tabindex="-1"
+              >
+                <small>04</small>Poha<i class="oh-fill" aria-hidden="true"></i>
+              </button>
+              <button
+                class="oh-tab"
+                role="tab"
+                type="button"
+                aria-selected="false"
+                tabindex="-1"
+              >
+                <small>05</small>Jaggery<i
+                  class="oh-fill"
+                  aria-hidden="true"
+                ></i>
+              </button>
             </div>
           </div>
-          <div class="hero-why" aria-label="Why Century">
-            <a class="why-item" href="#about">
-              <strong>Since 1980</strong>
-              <span
-                >The Century brand. Our family business, Dinero FoodWorks, has
-                been in food since 1958.</span
-              >
-            </a>
-            <a class="why-item" href="#services">
-              <strong>FSSC 22000</strong>
-              <span
-                >Food safety certified manufacturing, in our own Punjab
-                units.</span
-              >
-            </a>
-            <a class="why-item" href="#products">
-              <strong>Made by us</strong>
-              <span
-                >We process and pack our own range, so quality is checked at
-                every step.</span
-              >
-            </a>
-            <a class="why-item" href="#products">
-              <strong>Pure ingredients</strong>
-              <span
-                >Soya chunks with 53% pure plant protein, and unpolished
-                pulses.</span
-              >
-            </a>
+          <div class="legacy-hero" hidden>
+            <canvas id="seeds" aria-hidden="true"></canvas>
+            <div class="slider" id="heroSlider" data-auto="6000">
+              <div class="slides">
+                <div class="slide active" data-bg="#136C37">
+                  <div class="wrap hero-grid">
+                    <div class="hero-copy">
+                      <h1>
+                        <span class="w" style="animation-delay: 0.3s"
+                          >Good</span
+                        >
+                        <span class="w" style="animation-delay: 0.42s"
+                          >food,</span
+                        ><br /><span
+                          class="bar w"
+                          style="animation-delay: 0.54s"
+                          >honestly</span
+                        >
+                        <span class="w" style="animation-delay: 0.66s"
+                          >made.</span
+                        >
+                      </h1>
+                      <p class="lede a" style="--dl: 0.75s">
+                        Soya, Makhana, Pulses, Besan, Poha, Jaggery and
+                        single-serve sachets from our own Quality Certified
+                        Manufacturing Units. A family food business since 1958,
+                        and the Century brand since 1980.
+                      </p>
+                      <p class="cert">
+                        <span class="cert-btn cert-static"
+                          ><span class="cert-dot" aria-hidden="true"></span>FSSC
+                          22000 certified</span
+                        >
+                      </p>
+                      <div class="hero-ctas a" style="--dl: 0.9s">
+                        <a class="btn btn-y" href="#products"
+                          >Explore products</a
+                        ><a class="btn btn-o" href="#services"
+                          >Supply for your business</a
+                        >
+                      </div>
+                    </div>
+                    <div class="stage" id="stage">
+                      <div
+                        class="seal"
+                        data-seal="Pure home food • Since 1980 • "
+                        data-core="Since<br>1980"
+                      ></div>
+                      <div class="packs" id="packs"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="slide" data-bg="#0C4D27">
+                  <div class="wrap hero-grid">
+                    <div class="hero-copy">
+                      <h2 class="hh a" style="--dl: 0.15s">
+                        53% of Pure Plant Protein.
+                      </h2>
+                      <p class="lede a" style="--dl: 0.35s">
+                        Century Soya Chunks, Jumbo, Mini and Granules. 99%
+                        fat-free, vegan and super soft.
+                      </p>
+                      <div class="hero-ctas a" style="--dl: 0.5s">
+                        <a class="btn btn-y" href="#products/soya" data-grid
+                          >See the Soya range</a
+                        >
+                      </div>
+                    </div>
+                    <div class="sv">
+                      <img
+                        decoding="async"
+                        data-k="sc"
+                        alt=""
+                        style="
+                          left: 4%;
+                          height: 78%;
+                          --t: rotate(-9deg);
+                          --dl: 0.35s;
+                        "
+                      /><img
+                        decoding="async"
+                        data-k="scj"
+                        alt=""
+                        style="
+                          left: 26%;
+                          height: 84%;
+                          --t: rotate(-3deg);
+                          --dl: 0.47s;
+                        "
+                      /><img
+                        decoding="async"
+                        data-k="sg"
+                        alt=""
+                        style="
+                          left: 48%;
+                          height: 80%;
+                          --t: rotate(4deg);
+                          --dl: 0.59s;
+                        "
+                      /><img
+                        decoding="async"
+                        data-k="scm"
+                        alt=""
+                        style="
+                          left: 68%;
+                          height: 74%;
+                          --t: rotate(10deg);
+                          --dl: 0.71s;
+                        "
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="slide" data-bg="#136C37">
+                  <div class="wrap hero-grid">
+                    <div class="hero-copy">
+                      <h2 class="hh a" style="--dl: 0.15s">
+                        Makhana, graded by size.
+                      </h2>
+                      <p class="lede a" style="--dl: 0.35s">
+                        Classic Select for everyday, Extra Puffed for bold
+                        snacking, Mini Prime for kheer and gravies.
+                      </p>
+                      <div class="hero-ctas a" style="--dl: 0.5s">
+                        <a class="btn btn-y" href="#products/makhana" data-grid
+                          >See the Makhana range</a
+                        >
+                      </div>
+                    </div>
+                    <div class="sv">
+                      <img
+                        decoding="async"
+                        data-k="mk-classic"
+                        alt=""
+                        style="
+                          left: 2%;
+                          height: 80%;
+                          --t: rotate(-7deg);
+                          --dl: 0.35s;
+                        "
+                      /><img
+                        decoding="async"
+                        data-k="mk-puffed"
+                        alt=""
+                        style="
+                          left: 30%;
+                          height: 80%;
+                          --t: rotate(0deg);
+                          --dl: 0.47s;
+                        "
+                      /><img
+                        decoding="async"
+                        data-k="mk-mini"
+                        alt=""
+                        style="
+                          left: 58%;
+                          height: 80%;
+                          --t: rotate(7deg);
+                          --dl: 0.59s;
+                        "
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="slide" data-bg="#2a1a12">
+                  <div class="wrap hero-grid">
+                    <div class="hero-copy">
+                      <h2 class="hh a" style="--dl: 0.15s">
+                        Jaggery Powder sachets.
+                      </h2>
+                      <p class="lede a" style="--dl: 0.35s">
+                        Pure jaggery in 5 g single-serve sachets, made only from
+                        sugarcane with no chemicals or added colour. It
+                        dissolves instantly in Tea, Coffee and Smoothies.
+                      </p>
+                      <div class="hero-ctas a" style="--dl: 0.5s">
+                        <a class="btn btn-y" href="#services"
+                          >How sachet supply works</a
+                        ><a class="btn btn-o" href="#product/jaggery"
+                          >View Jaggery sachet</a
+                        >
+                      </div>
+                    </div>
+                    <div class="sv sq">
+                      <img
+                        decoding="async"
+                        data-k="jaggery"
+                        alt=""
+                        style="
+                          left: 4%;
+                          width: 90%;
+                          bottom: 16%;
+                          --t: rotate(-3deg);
+                          --dl: 0.35s;
+                        "
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="slide" data-bg="#4a1712">
+                  <div class="wrap hero-grid">
+                    <div class="hero-copy">
+                      <h2 class="hh a" style="--dl: 0.15s">
+                        Chilli Flakes &amp; Oregano.
+                      </h2>
+                      <p class="lede a" style="--dl: 0.35s">
+                        100% red Chilli Flakes and an Italian-style Oregano
+                        blend in 0.80 g sachets, for pizza, pasta, garlic bread
+                        and more.
+                      </p>
+                      <div class="hero-ctas a" style="--dl: 0.5s">
+                        <a class="btn btn-y" href="#services"
+                          >How sachet supply works</a
+                        ><a
+                          class="btn btn-o"
+                          href="#products/seasoning"
+                          data-grid
+                          >View seasoning sachets</a
+                        >
+                      </div>
+                    </div>
+                    <div class="sv sq">
+                      <img
+                        decoding="async"
+                        data-k="chilli"
+                        alt=""
+                        style="
+                          left: 0%;
+                          width: 56%;
+                          bottom: 36%;
+                          --t: rotate(-5deg);
+                          --dl: 0.35s;
+                        "
+                      /><img
+                        decoding="async"
+                        data-k="oregano"
+                        alt=""
+                        style="
+                          left: 44%;
+                          width: 54%;
+                          bottom: 6%;
+                          --t: rotate(4deg);
+                          --dl: 0.5s;
+                        "
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="s-ui wrap">
+                <button class="s-arr prev" aria-label="Previous slide"></button>
+                <div class="s-dots"></div>
+                <button class="s-arr next" aria-label="Next slide"></button>
+              </div>
+            </div>
+            <div class="hero-why" aria-label="Why Century">
+              <a class="why-item" href="#about">
+                <strong>Since 1980</strong>
+                <span
+                  >The Century brand. Our family business, Dinero FoodWorks, has
+                  been in food since 1958.</span
+                >
+              </a>
+              <a class="why-item" href="#services">
+                <strong>FSSC 22000</strong>
+                <span
+                  >Food safety certified manufacturing, in our own Punjab
+                  units.</span
+                >
+              </a>
+              <a class="why-item" href="#products">
+                <strong>Made by us</strong>
+                <span
+                  >We process and pack our own range, so quality is checked at
+                  every step.</span
+                >
+              </a>
+              <a class="why-item" href="#products">
+                <strong>Pure ingredients</strong>
+                <span
+                  >Soya chunks with 53% pure plant protein, and unpolished
+                  pulses.</span
+                >
+              </a>
+            </div>
           </div>
           <div
             class="shelf"
@@ -2547,7 +2953,8 @@
         }
       }
     </style>
-    <script src="assets/js/main.js?v=20261129"></script>
+    <script src="assets/js/hero.js?v=20261130"></script>
+    <script src="assets/js/main.js?v=20261130"></script>
     <script src="assets/js/vendor/motion.min.js?v=20261125"></script>
     <script src="assets/js/brand.js?v=20261125"></script>
     <script src="assets/js/glass.js?v=20261125"></script>

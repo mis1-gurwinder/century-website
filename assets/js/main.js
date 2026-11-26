@@ -1808,15 +1808,6 @@ function initSlider(el, onChange) {
   }
   el.querySelector(".prev").onclick = () => go(i - 1);
   el.querySelector(".next").onclick = () => go(i + 1);
-  // Pause while the pointer is over the slider so people can read it.
-  el.addEventListener("pointerenter", () => {
-    hover = true;
-    sched();
-  });
-  el.addEventListener("pointerleave", () => {
-    hover = false;
-    sched();
-  });
 
   let sx = null,
     sy = null;
