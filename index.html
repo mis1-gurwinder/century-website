@@ -759,6 +759,7 @@
           .c-hero {
             position: relative;
             overflow: hidden;
+            width: 100%;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -826,15 +827,15 @@
             display: flex;
             align-items: flex-end;
             justify-content: center;
-            width: 100%;
-            max-width: 1100px;
-            margin-top: clamp(108px, 14vw, 230px);
+            width: 100vw;
+            max-width: 1600px;
+            margin-top: clamp(96px, 11vw, 190px);
           }
           .c-hero .c-packs a {
             position: relative;
             display: block;
-            width: clamp(92px, 11.5vw, 172px);
-            margin: 0 -1.4vw;
+            width: clamp(110px, 14.5vw, 236px);
+            margin: 0 -2.4vw;
             border-radius: 12px;
             transform: translateY(var(--y, 0)) rotate(var(--r, 0deg));
             transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
@@ -850,7 +851,7 @@
           .c-hero .c-packs a:nth-child(3) {
             --r: 0deg;
             --y: -14px;
-            width: clamp(104px, 13vw, 196px);
+            width: clamp(124px, 16.5vw, 270px);
             z-index: 3;
           }
           .c-hero .c-packs a:nth-child(4) {
@@ -906,7 +907,7 @@
           .c-hero .c-copy {
             position: relative;
             z-index: 3;
-            margin-top: clamp(10px, 1.8vh, 22px);
+            margin-top: clamp(6px, 1vh, 14px);
             max-width: 680px;
             padding: 0 4px;
           }
@@ -1033,14 +1034,15 @@
             }
             .c-hero .c-packs {
               margin-top: clamp(92px, 30vw, 170px);
+              width: 100%;
               max-width: 100%;
             }
             .c-hero .c-packs a {
-              width: 19vw;
-              margin: 0 -1.2vw;
+              width: 21vw;
+              margin: 0 -1.4vw;
             }
             .c-hero .c-packs a:nth-child(3) {
-              width: 23vw;
+              width: 26vw;
             }
             .c-hero {
               min-height: auto;
