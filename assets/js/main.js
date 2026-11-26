@@ -1797,14 +1797,10 @@ function initSlider(el, onChange) {
   }
   function sched() {
     clearTimeout(t);
-    // Keep the slide still while the certificate popover is open or hovered,
-    // otherwise the popover is hidden when the next slide arrives.
-    const certBusy = !!el.querySelector("#certBadge.open, #certBadge:hover");
     const run =
       !reduce &&
       window.__loaded &&
       !hover &&
-      !certBusy &&
       visible &&
       el.closest(".view").classList.contains("on");
     el.classList.toggle("paused", !run);
@@ -3262,36 +3258,3 @@ function route() {
 }
 addEventListener("hashchange", route);
 route();
-
-(function () {
-  const badge = document.getElementById("certBadge");
-  if (!badge) return;
-  const btn = badge.querySelector(".cert-btn");
-  const resume = () => {
-    if (typeof heroS !== "undefined") heroS.sched();
-  };
-  btn.addEventListener("click", (e) => {
-    e.stopPropagation();
-    const open = badge.classList.toggle("open");
-    btn.setAttribute("aria-expanded", String(open));
-    resume();
-  });
-  document.addEventListener("click", (e) => {
-    if (!badge.contains(e.target) && badge.classList.contains("open")) {
-      badge.classList.remove("open");
-      btn.setAttribute("aria-expanded", "false");
-      resume();
-    }
-  });
-  badge.addEventListener("pointerenter", resume);
-  badge.addEventListener("pointerleave", resume);
-  // Escape closes the certificate and returns focus to the badge.
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && badge.classList.contains("open")) {
-      badge.classList.remove("open");
-      btn.setAttribute("aria-expanded", "false");
-      btn.focus();
-      resume();
-    }
-  });
-})();
