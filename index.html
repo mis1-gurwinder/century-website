@@ -396,6 +396,62 @@
       .cert-static {
         cursor: default;
       }
+      .hero-why {
+        position: relative;
+        z-index: 3;
+        display: grid;
+        gap: 12px;
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 0 16px 28px;
+      }
+      @media (min-width: 900px) {
+        .hero-why {
+          grid-template-columns: repeat(4, 1fr);
+        }
+      }
+      .why-item {
+        display: grid;
+        gap: 6px;
+        align-content: start;
+        padding: 16px 18px;
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        color: #fff;
+        text-decoration: none;
+        transition:
+          transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+          background-color 0.25s;
+      }
+      .why-item:hover {
+        transform: translateY(-3px);
+        background: rgba(255, 255, 255, 0.14);
+      }
+      .why-item:focus-visible {
+        outline: 3px solid #f5b520;
+        outline-offset: 3px;
+      }
+      .why-item strong {
+        font-family: "Fraunces", Georgia, serif;
+        font-weight: 600;
+        font-size: 1.1rem;
+        color: #f5b520;
+      }
+      .why-item span {
+        font-family: "Poppins", system-ui, sans-serif;
+        font-size: 0.9rem;
+        line-height: 1.45;
+        color: rgba(255, 255, 255, 0.88);
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .why-item,
+        .why-item:hover {
+          transition: none;
+          transform: none;
+        }
+      }
     </style>
   </head>
   <body>
@@ -466,7 +522,7 @@
       <div class="view" id="v-home">
         <section class="hero">
           <canvas id="seeds" aria-hidden="true"></canvas>
-          <div class="slider" id="heroSlider" data-auto="3500">
+          <div class="slider" id="heroSlider" data-auto="6000">
             <div class="slides">
               <div class="slide active" data-bg="#136C37">
                 <div class="wrap hero-grid">
@@ -709,6 +765,36 @@
               <div class="s-dots"></div>
               <button class="s-arr next" aria-label="Next slide"></button>
             </div>
+          </div>
+          <div class="hero-why" aria-label="Why Century">
+            <a class="why-item" href="#about">
+              <strong>Since 1980</strong>
+              <span
+                >The Century brand. Our family business, Dinero FoodWorks, has
+                been in food since 1958.</span
+              >
+            </a>
+            <a class="why-item" href="#services">
+              <strong>FSSC 22000</strong>
+              <span
+                >Food safety certified manufacturing, in our own Punjab
+                units.</span
+              >
+            </a>
+            <a class="why-item" href="#products">
+              <strong>Made by us</strong>
+              <span
+                >We process and pack our own range, so quality is checked at
+                every step.</span
+              >
+            </a>
+            <a class="why-item" href="#products">
+              <strong>Pure ingredients</strong>
+              <span
+                >Soya chunks with 53% pure plant protein, and unpolished
+                pulses.</span
+              >
+            </a>
           </div>
           <div
             class="shelf"
@@ -2461,7 +2547,7 @@
         }
       }
     </style>
-    <script src="assets/js/main.js?v=20261128"></script>
+    <script src="assets/js/main.js?v=20261129"></script>
     <script src="assets/js/vendor/motion.min.js?v=20261125"></script>
     <script src="assets/js/brand.js?v=20261125"></script>
     <script src="assets/js/glass.js?v=20261125"></script>
