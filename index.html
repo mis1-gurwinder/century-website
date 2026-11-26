@@ -455,192 +455,177 @@
       .legacy-hero[hidden] {
         display: none !important;
       }
-      /* Orbit hero */
-      .orbit-hero {
+      section.hero {
+        background-color: transparent !important;
+      }
+      /* Stage hero: one chapter per product, looping */
+      .stage-hero {
         position: relative;
         z-index: 1;
-        background: var(--ob, #136c37);
+        background: var(--sb, #136c37);
         transition: background-color 1s ease;
         color: #fff;
         overflow: hidden;
-        padding: 28px 16px 36px;
-        min-height: 100vh;
+        padding: 96px 16px 28px;
       }
-      .orbit-hero:focus {
-        outline: none;
-      }
-      .oh-wrap {
+      .sh-top {
         max-width: 1180px;
         margin: 0 auto;
-        display: grid;
-        gap: 28px;
-        align-items: center;
-      }
-      @media (min-width: 900px) {
-        .oh-wrap {
-          grid-template-columns: 1fr 1fr;
-          gap: 56px;
-        }
-      }
-      .oh-copy {
-        display: grid;
-        gap: 14px;
-        justify-items: start;
-        min-width: 0;
-      }
-      .orbit-hero h1 {
-        margin: 0;
-        font-size: clamp(2.6rem, 1.6rem + 4vw, 4.6rem);
-        line-height: 1;
-        font-weight: 900;
-        letter-spacing: -0.035em;
-      }
-      .orbit-hero h1 em {
-        font-style: italic;
-        font-weight: 300;
-        color: #f5b520;
-      }
-      .oh-cat-row {
-        margin: 8px 0 0;
-      }
-      .oh-cat {
-        font-family: "Fraunces", Georgia, serif;
-        font-weight: 600;
-        font-size: 1.35rem;
-        color: #f5b520;
-      }
-      .oh-line {
-        margin: 0;
-        font-size: 1.05rem;
-        color: rgba(255, 255, 255, 0.9);
-      }
-      .oh-lede {
-        margin: 6px 0 0;
-        max-width: 34em;
-        font-size: 0.98rem;
-        line-height: 1.6;
-        color: rgba(255, 255, 255, 0.85);
-      }
-      .oh-actions {
         display: flex;
-        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
         gap: 12px;
-        margin-top: 6px;
+        flex-wrap: wrap;
       }
-      .oh-dial {
-        position: relative;
-        width: min(100%, 520px);
-        aspect-ratio: 1;
-        margin: 0 auto;
-      }
-      .oh-ring {
-        position: absolute;
-        inset: 6%;
-        border-radius: 50%;
-        border: 1px dashed rgba(255, 255, 255, 0.28);
-      }
-      .oh-core {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        width: 38%;
-        aspect-ratio: 1;
-        transform: translate(-50%, -50%);
-        border-radius: 50%;
-        display: grid;
-        place-content: center;
-        text-align: center;
-        background: radial-gradient(
-          circle at 35% 30%,
-          rgba(255, 255, 255, 0.24),
-          rgba(255, 255, 255, 0.04)
-        );
-        z-index: 0;
-      }
-      .oh-num {
+      .sh-brand {
+        margin: 0;
         font-family: "Fraunces", Georgia, serif;
-        font-weight: 600;
-        font-size: clamp(2.4rem, 4vw, 3.4rem);
-        line-height: 1;
-        color: #fff;
+        font-size: 1.1rem;
+        color: rgba(255, 255, 255, 0.92);
       }
-      .oh-core small {
-        font-size: 0.8rem;
-        letter-spacing: 0.08em;
-        color: rgba(255, 255, 255, 0.75);
+      .sh-brand em {
+        color: #f5b520;
       }
-      .oh-pack {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        width: 36%;
-        display: block;
-        will-change: transform, opacity;
-        transition:
-          transform 0.9s cubic-bezier(0.22, 1, 0.36, 1),
-          opacity 0.9s ease;
-        cursor: pointer;
-      }
-      .oh-pack img {
-        display: block;
-        width: 100%;
-        height: auto;
-        filter: drop-shadow(0 22px 26px rgba(0, 0, 0, 0.38));
-        transition: transform 0.4s ease;
-      }
-      .oh-pack.is-active:hover img {
-        transform: scale(1.04) rotate(-1deg);
-      }
-      .oh-pack:focus-visible {
-        outline: 3px solid #f5b520;
-        outline-offset: 6px;
-        border-radius: 12px;
-      }
-      .oh-tabs {
+      .sh-body {
+        position: relative;
         display: grid;
-        grid-template-columns: repeat(5, minmax(0, 1fr));
-        gap: 10px;
         max-width: 1180px;
         margin: 28px auto 0;
       }
-      .oh-tab {
+      .sh-slide {
+        grid-area: 1 / 1;
+        position: relative;
+        display: grid;
+        gap: 22px;
+        align-items: center;
+        opacity: 0;
+        visibility: hidden;
+        transition:
+          opacity 0.8s ease,
+          visibility 0.8s;
+      }
+      .sh-slide.is-active {
+        opacity: 1;
+        visibility: visible;
+      }
+      @media (min-width: 900px) {
+        .sh-slide {
+          grid-template-columns: 1.05fr 0.95fr;
+          gap: 48px;
+          min-height: 440px;
+        }
+      }
+      .sh-word {
+        position: absolute;
+        left: -2%;
+        bottom: -8%;
+        font:
+          900 clamp(84px, 17vw, 230px)/0.8 Poppins,
+          system-ui,
+          sans-serif;
+        letter-spacing: -0.04em;
+        text-transform: uppercase;
+        color: transparent;
+        -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.2);
+        white-space: nowrap;
+        pointer-events: none;
+        z-index: 0;
+      }
+      .sh-copy {
+        position: relative;
+        z-index: 2;
+        display: grid;
+        gap: 16px;
+        justify-items: start;
+        min-width: 0;
+      }
+      .sh-copy h2 {
+        margin: 0;
+        font-size: clamp(2.1rem, 1.2rem + 3.4vw, 4.1rem);
+        line-height: 1.02;
+        font-weight: 900;
+        letter-spacing: -0.035em;
+      }
+      .sh-copy p {
+        margin: 0;
+        max-width: 30em;
+        font-size: 1.02rem;
+        line-height: 1.6;
+        color: rgba(255, 255, 255, 0.88);
+      }
+      .sh-pack {
+        position: relative;
+        z-index: 2;
+        justify-self: center;
+        width: min(70%, 340px);
+        transform: rotate(-4deg);
+        transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+      .sh-slide.is-active .sh-pack {
+        transform: rotate(-4deg) scale(1);
+      }
+      .sh-slide:not(.is-active) .sh-pack {
+        transform: rotate(-4deg) scale(0.92);
+      }
+      .sh-pack img {
+        display: block;
+        width: 100%;
+        height: auto;
+        filter: drop-shadow(0 30px 34px rgba(0, 0, 0, 0.4));
+      }
+      .sh-controls {
+        max-width: 1180px;
+        margin: 26px auto 0;
+        display: flex;
+        align-items: flex-end;
+        gap: 14px;
+      }
+      .sh-arrow {
+        flex: none;
+        width: 46px;
+        height: 46px;
+        border-radius: 50%;
+        border: 1px solid rgba(255, 255, 255, 0.35);
+        background: rgba(255, 255, 255, 0.1);
+        color: #fff;
+        display: grid;
+        place-items: center;
+        cursor: pointer;
+        transition: background-color 0.25s;
+      }
+      .sh-arrow:hover {
+        background: rgba(255, 255, 255, 0.2);
+      }
+      .sh-arrow:focus-visible {
+        outline: 3px solid #f5b520;
+        outline-offset: 3px;
+      }
+      .sh-arrow svg {
+        width: 20px;
+        height: 20px;
+      }
+      .sh-tabs {
+        flex: 1;
+        min-width: 0;
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 10px;
+      }
+      .sh-tab {
         position: relative;
         min-width: 0;
-        text-align: left;
         padding: 12px 0 0;
         background: transparent;
         border: 0;
         color: rgba(255, 255, 255, 0.7);
         font:
-          500 0.9rem/1.2 Poppins,
+          600 0.9rem/1.2 Poppins,
           system-ui,
           sans-serif;
+        text-align: left;
         cursor: pointer;
       }
-      .oh-tab small {
-        display: block;
-        font-family: "Fraunces", Georgia, serif;
-        font-size: 0.8rem;
-        color: #f5b520;
-      }
-      .oh-tab[aria-selected="true"] {
-        color: #fff;
-      }
-      .oh-tab:focus-visible {
-        outline: 3px solid #f5b520;
-        outline-offset: 4px;
-        border-radius: 6px;
-      }
-      .oh-fill {
-        position: absolute;
-        left: 0;
-        top: 0;
-        height: 3px;
-        width: 0;
-        background: #f5b520;
-        border-radius: 3px;
-      }
-      .oh-tab::before {
+      .sh-tab::before {
         content: "";
         position: absolute;
         left: 0;
@@ -650,17 +635,31 @@
         background: rgba(255, 255, 255, 0.2);
         border-radius: 3px;
       }
-      .oh-tab:not([aria-selected="true"]) .oh-fill {
+      .sh-tab[aria-selected="true"] {
+        color: #fff;
+      }
+      .sh-tab:focus-visible {
+        outline: 3px solid #f5b520;
+        outline-offset: 4px;
+        border-radius: 6px;
+      }
+      .sh-fill {
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 3px;
+        width: 0;
+        background: #f5b520;
+        border-radius: 3px;
+      }
+      .sh-tab:not([aria-selected="true"]) .sh-fill {
         width: 0;
         animation: none;
       }
-      .oh-tab[aria-selected="true"] .oh-fill {
-        animation: ohFill 4.8s linear forwards;
+      .sh-tab[aria-selected="true"] .sh-fill {
+        animation: shFill 5.5s linear forwards;
       }
-      section.hero {
-        background-color: transparent !important;
-      }
-      @keyframes ohFill {
+      @keyframes shFill {
         from {
           width: 0;
         }
@@ -668,22 +667,41 @@
           width: 100%;
         }
       }
+      .sh-supply {
+        max-width: 1180px;
+        margin: 22px auto 0;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 16px;
+        font-size: 0.95rem;
+      }
+      .sh-supply a {
+        color: #fff;
+        text-decoration: underline;
+        text-underline-offset: 4px;
+      }
       @media (max-width: 640px) {
-        .oh-tab small {
-          font-size: 0.72rem;
+        .sh-tab {
+          font-size: 0.78rem;
         }
-        .oh-tab {
-          font-size: 0.8rem;
+        .sh-arrow {
+          width: 40px;
+          height: 40px;
+        }
+        .sh-controls {
+          gap: 8px;
         }
       }
       @media (prefers-reduced-motion: reduce) {
-        .oh-pack,
-        .orbit-hero,
-        .oh-pack img {
-          transition: none;
+        .sh-slide,
+        .sh-pack,
+        .stage-hero,
+        .sh-fill {
+          transition: none !important;
         }
-        .oh-fill {
-          animation: none !important;
+        .sh-tab[aria-selected="true"] .sh-fill {
+          animation: none;
         }
       }
     </style>
@@ -755,167 +773,236 @@
       <!-- HOME -->
       <div class="view" id="v-home">
         <section class="hero">
-          <div class="orbit-hero" id="orbitHero" tabindex="-1">
-            <div class="oh-wrap">
-              <div class="oh-copy">
-                <h1>Good food, <em>honestly</em> made.</h1>
-                <p class="oh-cat-row">
-                  <strong class="oh-cat">Soya Chunks</strong>
-                </p>
-                <p class="oh-line">53% pure plant protein, 99% fat-free.</p>
-                <p class="oh-lede">
-                  Soya, Makhana, Pulses, Besan, Poha, Jaggery and single-serve
-                  sachets from our own Quality Certified Manufacturing Units. A
-                  family food business since 1958, and the Century brand since
-                  1980.
-                </p>
-                <p class="cert">
-                  <span class="cert-btn cert-static"
-                    ><span class="cert-dot" aria-hidden="true"></span>FSSC 22000
-                    certified</span
-                  >
-                </p>
-                <div class="oh-actions">
-                  <a class="btn btn-y" href="#products">Explore products</a>
-                  <a class="btn btn-o" href="#services"
-                    >Supply for your business</a
+          <section
+            class="stage-hero"
+            id="stageHero"
+            aria-roledescription="carousel"
+            aria-label="Century product range"
+          >
+            <div class="sh-body">
+              <article
+                class="sh-slide is-active"
+                data-bg="#136C37"
+                aria-label="1 of 5"
+              >
+                <span class="sh-word" aria-hidden="true">Soya</span>
+                <div class="sh-copy">
+                  <h2>53% pure plant protein.</h2>
+                  <p>
+                    Soya chunks in Jumbo, Mini and Granules. 99% fat-free, vegan
+                    and super soft.
+                  </p>
+                  <a class="btn btn-y" href="#product/soya-chunks"
+                    >See the soya range</a
                   >
                 </div>
-              </div>
-              <div class="oh-dial" id="ohDial">
-                <div class="oh-ring" aria-hidden="true"></div>
-                <div class="oh-core" aria-hidden="true">
-                  <span class="oh-num">01</span><small>of 05</small>
-                </div>
-                <a
-                  class="oh-pack"
-                  href="#product/soya-chunks"
-                  data-title="Soya Chunks"
-                  data-line="53% pure plant protein, 99% fat-free soya."
-                  data-bg="#136C37"
-                >
+                <div class="sh-pack">
                   <img
                     src="assets/images/sc.webp"
                     alt="Century Soya Chunks pack"
                     width="200"
                     height="260"
                   />
-                </a>
-                <a
-                  class="oh-pack"
-                  href="#product/mk-classic"
-                  data-title="Makhana"
-                  data-line="Classic Select, Extra Puffed and Mini Prime, graded by size."
-                  data-bg="#0C4D27"
-                >
+                </div>
+              </article>
+              <article
+                class="sh-slide"
+                data-bg="#0C4D27"
+                aria-label="2 of 5"
+                aria-hidden="true"
+              >
+                <span class="sh-word" aria-hidden="true">Makhana</span>
+                <div class="sh-copy">
+                  <h2>Makhana, graded by size.</h2>
+                  <p>
+                    Classic Select for everyday, Extra Puffed for bold snacking,
+                    Mini Prime for kheer and gravies.
+                  </p>
+                  <a class="btn btn-y" href="#product/mk-classic"
+                    >See the makhana range</a
+                  >
+                </div>
+                <div class="sh-pack">
                   <img
                     src="assets/images/mk-classic.webp"
-                    alt="Century Makhana pack"
+                    alt="Century Makhana Classic Select pack"
                     width="200"
                     height="260"
                   />
-                </a>
-                <a
-                  class="oh-pack"
-                  href="#product/besan"
-                  data-title="Besan"
-                  data-line="Gram flour for everyday cooking."
-                  data-bg="#6B4A12"
-                >
+                </div>
+              </article>
+              <article
+                class="sh-slide"
+                data-bg="#6B4A12"
+                aria-label="3 of 5"
+                aria-hidden="true"
+              >
+                <span class="sh-word" aria-hidden="true">Besan</span>
+                <div class="sh-copy">
+                  <h2>Besan for everyday cooking.</h2>
+                  <p>
+                    Gram flour from our own Quality Certified manufacturing
+                    units, packed for every kitchen.
+                  </p>
+                  <a class="btn btn-y" href="#product/besan"
+                    >See the besan range</a
+                  >
+                </div>
+                <div class="sh-pack">
                   <img
                     src="assets/images/besan.webp"
                     alt="Century Besan pack"
                     width="200"
                     height="260"
                   />
-                </a>
-                <a
-                  class="oh-pack"
-                  href="#product/poha"
-                  data-title="Poha"
-                  data-line="Flattened rice for quick breakfasts."
-                  data-bg="#5A2B16"
-                >
+                </div>
+              </article>
+              <article
+                class="sh-slide"
+                data-bg="#5A2B16"
+                aria-label="4 of 5"
+                aria-hidden="true"
+              >
+                <span class="sh-word" aria-hidden="true">Poha</span>
+                <div class="sh-copy">
+                  <h2>Poha, for quick breakfasts.</h2>
+                  <p>
+                    Flattened rice from our own Quality Certified manufacturing
+                    units.
+                  </p>
+                  <a class="btn btn-y" href="#product/poha"
+                    >See the poha range</a
+                  >
+                </div>
+                <div class="sh-pack">
                   <img
                     src="assets/images/poha.webp"
                     alt="Century Poha pack"
                     width="200"
                     height="260"
                   />
-                </a>
-                <a
-                  class="oh-pack"
-                  href="#product/jaggery"
-                  data-title="Jaggery"
-                  data-line="Pure jaggery in 5 g sachets, made from sugarcane."
-                  data-bg="#3B2A12"
-                >
+                </div>
+              </article>
+              <article
+                class="sh-slide"
+                data-bg="#3B2A12"
+                aria-label="5 of 5"
+                aria-hidden="true"
+              >
+                <span class="sh-word" aria-hidden="true">Jaggery</span>
+                <div class="sh-copy">
+                  <h2>Jaggery in 5 g sachets.</h2>
+                  <p>
+                    Pure jaggery made from sugarcane, with no chemicals or added
+                    colour. It dissolves in tea, coffee and smoothies.
+                  </p>
+                  <a class="btn btn-y" href="#product/jaggery"
+                    >See the jaggery range</a
+                  >
+                </div>
+                <div class="sh-pack">
                   <img
                     src="assets/images/jaggery-front.webp"
                     alt="Century Jaggery sachet"
                     width="200"
                     height="260"
                   />
-                </a>
+                </div>
+              </article>
+            </div>
+            <div class="sh-controls">
+              <button
+                class="sh-arrow sh-prev"
+                type="button"
+                aria-label="Previous product"
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="M15 6l-6 6 6 6"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </button>
+              <div
+                class="sh-tabs"
+                role="tablist"
+                aria-label="Choose a product line"
+              >
+                <button
+                  class="sh-tab"
+                  role="tab"
+                  type="button"
+                  aria-selected="true"
+                >
+                  Soya<i class="sh-fill" aria-hidden="true"></i>
+                </button>
+                <button
+                  class="sh-tab"
+                  role="tab"
+                  type="button"
+                  aria-selected="false"
+                  tabindex="-1"
+                >
+                  Makhana<i class="sh-fill" aria-hidden="true"></i>
+                </button>
+                <button
+                  class="sh-tab"
+                  role="tab"
+                  type="button"
+                  aria-selected="false"
+                  tabindex="-1"
+                >
+                  Besan<i class="sh-fill" aria-hidden="true"></i>
+                </button>
+                <button
+                  class="sh-tab"
+                  role="tab"
+                  type="button"
+                  aria-selected="false"
+                  tabindex="-1"
+                >
+                  Poha<i class="sh-fill" aria-hidden="true"></i>
+                </button>
+                <button
+                  class="sh-tab"
+                  role="tab"
+                  type="button"
+                  aria-selected="false"
+                  tabindex="-1"
+                >
+                  Jaggery<i class="sh-fill" aria-hidden="true"></i>
+                </button>
               </div>
-            </div>
-            <div
-              class="oh-tabs"
-              role="tablist"
-              aria-label="Choose a product line"
-            >
               <button
-                class="oh-tab"
-                role="tab"
+                class="sh-arrow sh-next"
                 type="button"
-                aria-selected="true"
+                aria-label="Next product"
               >
-                <small>01</small>Soya<i class="oh-fill" aria-hidden="true"></i>
-              </button>
-              <button
-                class="oh-tab"
-                role="tab"
-                type="button"
-                aria-selected="false"
-                tabindex="-1"
-              >
-                <small>02</small>Makhana<i
-                  class="oh-fill"
-                  aria-hidden="true"
-                ></i>
-              </button>
-              <button
-                class="oh-tab"
-                role="tab"
-                type="button"
-                aria-selected="false"
-                tabindex="-1"
-              >
-                <small>03</small>Besan<i class="oh-fill" aria-hidden="true"></i>
-              </button>
-              <button
-                class="oh-tab"
-                role="tab"
-                type="button"
-                aria-selected="false"
-                tabindex="-1"
-              >
-                <small>04</small>Poha<i class="oh-fill" aria-hidden="true"></i>
-              </button>
-              <button
-                class="oh-tab"
-                role="tab"
-                type="button"
-                aria-selected="false"
-                tabindex="-1"
-              >
-                <small>05</small>Jaggery<i
-                  class="oh-fill"
-                  aria-hidden="true"
-                ></i>
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="M9 6l6 6-6 6"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
               </button>
             </div>
-          </div>
+            <p class="sh-supply">
+              <span class="cert"
+                ><span class="cert-btn cert-static"
+                  ><span class="cert-dot" aria-hidden="true"></span>FSSC 22000
+                  certified</span
+                ></span
+              ><a href="#services">Supply for your business</a>
+            </p>
+          </section>
           <div class="legacy-hero" hidden>
             <canvas id="seeds" aria-hidden="true"></canvas>
             <div class="slider" id="heroSlider" data-auto="6000">
@@ -2953,10 +3040,10 @@
         }
       }
     </style>
-    <script src="assets/js/hero.js?v=20261130"></script>
-    <script src="assets/js/main.js?v=20261130"></script>
+    <script src="assets/js/hero.js?v=20261203"></script>
+    <script src="assets/js/main.js?v=20261203"></script>
     <script src="assets/js/vendor/motion.min.js?v=20261125"></script>
-    <script src="assets/js/brand.js?v=20261125"></script>
+    <script src="assets/js/brand.js?v=20261203"></script>
     <script src="assets/js/glass.js?v=20261125"></script>
     <script src="assets/js/fx.js?v=20261125"></script>
     <script>
